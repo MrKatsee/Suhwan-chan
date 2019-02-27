@@ -145,7 +145,7 @@ public class ClientManager : MonoBehaviour
         }
     }
 
-    public static string IPAddress = "10.210.24.60";
+    public static string IPAddress = "127.0.0.1";
     public static string ClientName { get; set; }
 
     public static ClientManager instance = null;

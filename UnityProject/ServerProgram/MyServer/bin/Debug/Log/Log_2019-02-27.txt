@@ -1,0 +1,57 @@
+10-50-06:Server Open : Server Address is 192.168.1.102
+10-50-22:Server Close
+10-50-53:Server Open : Server Address is 192.168.1.102
+10-50-57:Server Close
+10-53-13:Server Open : Server Address is 192.168.1.102
+10-53-17:No. 0 client connected : address is 127.0.0.1:52858
+10-53-34:Received Message : [0]/SIGNUP ID=test_1&PW=12345
+10-53-34:Try to SignUp
+10-53-34:Parsed Data ID : test_1 PW : 12345
+10-53-34:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=CREATE
+10-53-35:New User Sign Up : test_1
+10-53-35:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN
+10-53-41:Received Message : [0]/SIGNIN ID=test_1&PW=12345
+10-53-41:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=ERROR_WRONGID
+10-53-47:No. 0 client disconnected : address is 127.0.0.1:52858
+10-53-47:Server Close
+10-53-47:No. 0 client disconnected : address is 127.0.0.1:52858
+10-56-05:Server Open : Server Address is 192.168.1.102
+10-56-17:No. 0 client connected : address is 127.0.0.1:53016
+10-56-23:Received Message : [0]/SIGNUP ID=123456&PW=12345
+10-56-23:Try to SignUp
+10-56-23:Parsed Data ID : 123456 PW : 12345
+10-56-23:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=CREATE
+10-56-23:New User Sign Up : 123456
+10-56-23:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN
+10-56-44:Received Message : [0]/SIGNIN ID=123456&PW=12345
+10-56-44:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=ERROR_WRONGID
+10-56-55:No. 0 client disconnected : address is 127.0.0.1:53016
+10-56-55:Server Close
+10-56-55:No. 0 client disconnected : address is 127.0.0.1:53016
+10-58-04:Server Open : Server Address is 192.168.1.102
+10-58-09:No. 0 client connected : address is 127.0.0.1:53110
+10-58-14:Received Message : [0]/SIGNUP ID=12312312&PW=adqweqe
+10-58-14:Try to SignUp
+10-58-14:Parsed Data ID : 12312312 PW : adqweqe
+10-58-14:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=CREATE
+10-58-14:New User Sign Up : 12312312
+10-58-14:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN
+10-58-29:Received Message : [0]/SIGNIN ID=12312312&PW=adqweqe
+10-58-30:New User Sign In : 12312312
+10-58-30:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN
+10-58-31:Received Message : [0]/SIGNIN ID=12312312&PW=adqweqe
+10-58-31:New User Sign In : 12312312
+10-58-31:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN
+10-58-32:Received Message : [0]/SIGNIN ID=12312312&PW=adqweqe
+10-58-32:New User Sign In : 12312312
+10-58-32:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN
+10-58-33:Received Message : [0]/SIGNIN ID=12312312&PW=adqweqe
+10-58-33:New User Sign In : 12312312
+10-58-33:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN
+10-58-38:Received Message : [0]/SIGNIN ID=12312312&PW=ee
+10-58-38:Wrong User Tried To Sign Up : 12312312 IP ADDRESS : 127.0.0.1:53110
+10-58-38:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=ERROR_WRONGPW
+10-58-43:Received Message : [0]/SIGNIN ID=wqe&PW=ee
+10-58-43:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=ERROR_WRONGID
+10-58-51:No. 0 client disconnected : address is 127.0.0.1:53110
+10-58-51:Server Close

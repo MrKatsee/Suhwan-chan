@@ -1,2 +1,0 @@
-04-59-04:Server Open : Server Address is 180.69.159.168
-04-59-31:Server ShutDown
