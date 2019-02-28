@@ -13,9 +13,9 @@ namespace MyServer
     {
         public static int MAXINDEX = 64;
 
-        static Encoding encodingType = Encoding.UTF8;
+        private static Encoding encodingType = Encoding.UTF8;
 
-        static NetworkConnection[] conn = new NetworkConnection[MAXINDEX];
+        private static NetworkConnection[] conn = new NetworkConnection[MAXINDEX];
 
         public static int Count
         {
@@ -54,16 +54,31 @@ namespace MyServer
             else return null;
         }
 
-        public static NetworkConnection GetConnection(string _name)
+        public static NetworkConnection GetConnectionByUser(User user)
         {
-            for (int i = 0; i < MAXINDEX; ++i)
+            for(int i = 0; i < Count; ++i)
             {
-                if (conn[i] != null)
-                {
-                    if (conn[i].name == _name) return conn[i];
-                }
+                NetworkConnection connection = GetConnection(i);
+                if (connection == null) continue;
+                if (connection.user == null) continue;
+                if (user.CheckID(connection.user.ID)) return connection;
             }
             return null;
+        }
+
+        public static bool IsUserConnected(User user)
+        {
+            lock (conn)
+            {
+                for(int i = 0; i < Count; ++i)
+                {
+                    NetworkConnection connection = GetConnection(i);
+                    if (connection == null) continue;
+                    if (connection.user == null) continue;
+                    if (user.CheckID(connection.user.ID)) return true;
+                }
+                return false;
+            }
         }
 
         public static void CreateConnection(Socket _socket)
@@ -81,14 +96,14 @@ namespace MyServer
         {
             for (int i = 0; i < Count; ++i)
             {
-                NetworkConnection conn = GetConnection(i);
-                if (conn != null) conn.ShutDown();
+                NetworkConnection connection = GetConnection(i);
+                if (connection != null) connection.ShutDown();
             }
         }
 
         public bool IsConnected { get; private set; }
         public int index;
-        public string name;
+        public User user;
         public string Address { get; private set; }
 
         Socket socket;
@@ -109,26 +124,6 @@ namespace MyServer
             thread_Receiver = new Thread(ReceiveMsg);
             thread_Receiver.IsBackground = true;
             thread_Receiver.Start();
-        }
-
-        public void SetName(string _name)
-        {
-            name = _name;
-            int sameCount = 0;
-            for (int i = 0; i < MAXINDEX; ++i)
-            {
-                if (i != index)
-                {
-                    NetworkConnection conn = GetConnection(i);
-                    if (conn != null)
-                    {
-                        if (conn.name == name)
-                        {
-                            name = name + "_" + (++sameCount);
-                        }
-                    }
-                }
-            }
         }
 
         public void SendMsg(string str)
@@ -161,7 +156,6 @@ namespace MyServer
             }
             catch (Exception e)
             {
-                
                 LogManager.WriteLog(
                         string.Format("Error for No. {0} client : {1}", this.index, e.Message));
             }
@@ -169,7 +163,7 @@ namespace MyServer
         }
 
         System.Object shutDownLock = new object();
-        private void ShutDown()
+        public void ShutDown()
         {
             lock (shutDownLock)
             {

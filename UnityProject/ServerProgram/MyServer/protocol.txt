@@ -1,0 +1,25 @@
+서버 -> 클라 메시지
+/ORDER				명령
+/NOTICE				알림
+/NOTICE SIGNUP			알림 - 계정 작성 중
+/NOTICE SIGNIN {0}		알림 - 계정 접속 {계정 정보}
+/ERROR EXIST			오류 - 계정 존재함
+/ERROR ACCESS			오류 - 계정 접속 중
+/ERROR WRONGID			오류 - 잘못된 ID
+/ERROR WRONGPW		오류 - 잘못된 PW
+/ERROR SHUTDOWN		오류 - 서버 닫힘
+/MATCH START {0}			매치 - 시작 	{아이디 정보}			// 상대방 ID 정보를 가져온다. (UI 표시)
+/MATCH WAIT {0}			매치 - 대기	{대기 시간}			// 5초 동안 선택할 시간을 준다.
+/MATCH STOP			매치 - 중단					// 상대방 연결 끊김 등 진행 불가능 시.
+/MATCH WIN			매치 - 승리
+/MATCH LOSE			매치 - 패배
+/WHISPER {0} {1}			귓속말 		{아이디 정보} {내용}
+
+클라 -> 서버 메시지
+/SIGNIN ID={0}&PW={1}   		로그인		{아이디 정보} {비밀번호 정보}
+/SIGNUP ID={0}&PW={1}   		회원가입		{아이디 정보} {비밀번호 정보}
+/MATCH START			매치 - 시작					// 매치메이킹 시작 버튼을 누르면 호출, 서버는 해당 플레이어를 큐에 넣는다.
+/MATCH READY			매치 - 준비 완료					// 배틀 씬 로드 완료, 상대방 정보 로드 완료 시 서버로 호출, 서버는 양 측에서 이 메시지를 받아야 게임을 시작한다.
+/MATCH HAND {0}			매치 - 사용	{내용}				// 가위바위보 게임이므로 0, 1, 2 중 하나.
+/MATCH BATTLE			매치 - 배틀					// 5초 클라이언트 연산이 끝나고 수신, 서버는 양 측에서 이 메시지를 받아야 결과를 보내준다.
+/DISCONNECT			연결 끊어짐	

@@ -23,7 +23,7 @@ public class UI_Toast : MonoBehaviour {
     {
         GameObject newToast = Instantiate(toastObject);
         newToast.SetActive(true);
-        newToast.transform.parent = toastTransform;
+        newToast.transform.SetParent(toastTransform);
         newToast.GetComponent<UI_ToastObject>().MakeToast(content, time);
     }
 

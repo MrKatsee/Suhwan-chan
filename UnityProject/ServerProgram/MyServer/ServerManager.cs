@@ -149,7 +149,7 @@ namespace MyServer
             }
         }
 
-        public static string Notice<T>(NoticeType noticeType, T value)
+        public static string NoticeMessage<T>(NoticeType noticeType, T value)
         {
             return string.Format("TYPE={0}&VALUE={1}", Enum.GetName(typeof(NoticeType), noticeType), Enum.GetName(typeof(T), value));
         }
@@ -193,30 +193,46 @@ namespace MyServer
                                                 }
                                         }
                                     }
-                                    if (newUser.isAvaliable)
+                                    if (newUser.IsAvaliable)
                                     {
                                         if (ResourceManager.CheckFile(string.Format("{0}/{1}.txt", User.DIRECTORY, newUser.ID)))
                                         {
                                             User targetUser = ResourceManager.LoadFile<User>(string.Format("{0}/{1}.txt", User.DIRECTORY, newUser.ID));
                                             if (targetUser.CheckPassword(newUser.PW))
                                             {
-                                                LogManager.WriteLog("New User Sign In : " + newUser.ID);
-                                                // 계정 정보 전송
-                                                Send(
-                                                MessageType.NOTICE,
-                                                CastingType.UNICAST,
-                                                Notice(NoticeType.LOGINSTATE, LoginState.SIGNIN),
-                                                senderIndex);
+                                                if (NetworkConnection.IsUserConnected(newUser))
+                                                {
+                                                    // 이미 접속 중인 계정이 있다면..?
+                                                    LogManager.WriteLog("Warning! Already Accessed Account : " + newUser.ID + "IP ADDRESS : " + NetworkConnection.GetConnection(senderIndex).Address);
+                                                    Send(
+                                                        MessageType.NOTICE,
+                                                        CastingType.UNICAST,
+                                                        NoticeMessage(NoticeType.LOGINSTATE, LoginState.ERROR_ACCESS),
+                                                        senderIndex);
+                                                }
+                                                else
+                                                {
+                                                    LogManager.WriteLog("New User Sign In : " + newUser.ID + " IP ADDRESS : " + NetworkConnection.GetConnection(senderIndex).Address);
+                                                    NetworkConnection.GetConnection(senderIndex).user = newUser;
+                                                    // 계정 정보 전송
+                                                    // 이 부분에서 귓말같은 걸 한꺼번에 전송
+                                                    Send(
+                                                        MessageType.NOTICE,
+                                                        CastingType.UNICAST,
+                                                        NoticeMessage(NoticeType.LOGINSTATE, LoginState.SIGNIN) + "&DATA=" +
+                                                        targetUser.ToData(),
+                                                        senderIndex);
+                                                }
                                             }
                                             else
                                             {
                                                 LogManager.WriteLog("Wrong User Tried To Sign Up : " + newUser.ID + " IP ADDRESS : " + NetworkConnection.GetConnection(senderIndex).Address);
                                                 // 패스워드 에러 메시지 전송
                                                 Send(
-                                                MessageType.NOTICE,
-                                                CastingType.UNICAST,
-                                                Notice(NoticeType.LOGINSTATE, LoginState.ERROR_WRONGPW),
-                                                senderIndex);
+                                                    MessageType.NOTICE,
+                                                    CastingType.UNICAST,
+                                                    NoticeMessage(NoticeType.LOGINSTATE, LoginState.ERROR_WRONGPW),
+                                                    senderIndex);
                                             }
                                         }
                                         else
@@ -225,7 +241,7 @@ namespace MyServer
                                             Send(
                                                 MessageType.NOTICE,
                                                 CastingType.UNICAST,
-                                                Notice(NoticeType.LOGINSTATE, LoginState.ERROR_WRONGID),
+                                                NoticeMessage(NoticeType.LOGINSTATE, LoginState.ERROR_WRONGID),
                                                 senderIndex);
                                         }
                                     }
@@ -235,7 +251,7 @@ namespace MyServer
                                         Send(
                                                 MessageType.NOTICE,
                                                 CastingType.UNICAST,
-                                                Notice(NoticeType.LOGINSTATE, LoginState.ERROR_WRONGDATA),
+                                                NoticeMessage(NoticeType.LOGINSTATE, LoginState.ERROR_WRONGDATA),
                                                 senderIndex);
                                     }
                                     break;
@@ -263,7 +279,7 @@ namespace MyServer
                                         }
                                     }
                                     LogManager.WriteLog("Parsed Data ID : " + newUser.ID + " PW : " + newUser.PW);
-                                    if (newUser.isAvaliable)
+                                    if (newUser.IsAvaliable)
                                     {
                                         if (!ResourceManager.CheckFile(string.Format("{0}/{1}.txt", User.DIRECTORY, newUser.ID)))
                                         {
@@ -271,9 +287,9 @@ namespace MyServer
                                             Send(
                                                 MessageType.NOTICE,
                                                 CastingType.UNICAST,
-                                                Notice(NoticeType.LOGINSTATE, LoginState.CREATE),
+                                                NoticeMessage(NoticeType.LOGINSTATE, LoginState.CREATE),
                                                 senderIndex);
-                                            LogManager.WriteLog("New User Sign Up : " + newUser.ID);
+                                            LogManager.WriteLog("New User Sign Up : " + newUser.ID + " IP ADDRESS : " + NetworkConnection.GetConnection(senderIndex).Address);
                                             ResourceManager.SaveFile<User>(
                                                 string.Format("{0}/{1}.txt", User.DIRECTORY, newUser.ID),
                                                 newUser);
@@ -281,7 +297,8 @@ namespace MyServer
                                             Send(
                                                 MessageType.NOTICE,
                                                 CastingType.UNICAST,
-                                                Notice(NoticeType.LOGINSTATE, LoginState.SIGNIN),
+                                                NoticeMessage(NoticeType.LOGINSTATE, LoginState.SIGNIN) + "&DATA=" +
+                                                newUser.ToData(),
                                                 senderIndex);
                                         }
                                         else
@@ -290,7 +307,7 @@ namespace MyServer
                                             Send(
                                                 MessageType.NOTICE,
                                                 CastingType.UNICAST,
-                                                Notice(NoticeType.LOGINSTATE, LoginState.WARNING_EXIST),
+                                                NoticeMessage(NoticeType.LOGINSTATE, LoginState.WARNING_EXIST),
                                                 senderIndex);
                                         }
                                     }
@@ -300,10 +317,15 @@ namespace MyServer
                                         Send(
                                                 MessageType.NOTICE,
                                                 CastingType.UNICAST,
-                                                Notice(NoticeType.LOGINSTATE, LoginState.ERROR_WRONGDATA),
+                                                NoticeMessage(NoticeType.LOGINSTATE, LoginState.ERROR_WRONGDATA),
                                                 senderIndex);
                                         LogManager.WriteLog("Try to SignUp But ERROR_1");
                                     }
+                                    break;
+                                }
+                            case NetworkMessage.MessageType.DISCONNECT:
+                                {
+                                    NetworkConnection.GetConnection(senderIndex).ShutDown();
                                     break;
                                 }
                             case NetworkMessage.MessageType.ERROR:
@@ -311,7 +333,7 @@ namespace MyServer
                         }
                     }
                 }
-                Thread.Sleep(50);
+                Thread.Sleep(50);   // 메시지의 처리는 0.05초 당 한 번 돌리면 되겠지.
             }
         }
 

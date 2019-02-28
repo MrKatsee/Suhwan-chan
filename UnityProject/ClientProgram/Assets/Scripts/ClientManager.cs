@@ -165,7 +165,6 @@ public class ClientManager : MonoBehaviour
     private void Start()
     {
         MyClient.Init(IPAddress);
-        UIManager_Main.instance.ui_Toast.MakeToast("테스트", 2f);
         StartCoroutine(ConnectSequenceUI());
     }
 
@@ -196,6 +195,7 @@ public class ClientManager : MonoBehaviour
                             string[] messageData = message.Split('&');
                             string typeData = string.Empty;
                             string valueData = string.Empty;
+                            string noticeData = string.Empty;
                             foreach (string datum in messageData)
                             {
                                 string[] stringData = datum.Split('='); // stringData[0] 은 dataType stringData[1] 은 dataValue
@@ -211,9 +211,13 @@ public class ClientManager : MonoBehaviour
                                             valueData = stringData[1];
                                             break;
                                         }
+                                    case "DATA":
+                                        {
+                                            noticeData = stringData[1];
+                                            break;
+                                        }
                                 }
                             }
-                            MyDebug.Log("테스트 : " + typeData + " " + valueData);
                             switch (NetworkMessage.ParseData<NoticeType>(typeData))
                             {
                                 case NoticeType.LOGINSTATE:
@@ -227,14 +231,22 @@ public class ClientManager : MonoBehaviour
                                                 }
                                             case LoginState.SIGNIN:
                                                 {
+                                                    PlayManager.Instance.user = User.ParseData(noticeData);
                                                     UIManager_Main.instance.ui_Loading.StopLoading();
-                                                    UIManager_Main.instance.ui_Toast.MakeToast("로그인 성공!", 3f);
+                                                    UIManager_Main.instance.ui_Login.SetActive(false);
+                                                    UIManager_Main.instance.ui_Toast.MakeToast(PlayManager.Instance.user.ID + "님, 환영합니다!", 3f);
                                                     break;
                                                 }
                                             case LoginState.WARNING_EXIST:
                                                 {
                                                     UIManager_Main.instance.ui_Loading.StopLoading();
                                                     UIManager_Main.instance.ui_Toast.MakeToast("이미 존재하는 ID입니다.", 3f);
+                                                    break;
+                                                }
+                                            case LoginState.ERROR_ACCESS:
+                                                {
+                                                    UIManager_Main.instance.ui_Loading.StopLoading();
+                                                    UIManager_Main.instance.ui_Toast.MakeToast("이미 접속 중인 ID입니다!", 3f);
                                                     break;
                                                 }
                                             case LoginState.ERROR_WRONGID:
@@ -275,6 +287,7 @@ public class ClientManager : MonoBehaviour
     private void OnDestroy()
     {
         StopAllCoroutines();
+        Send(MessageType.DISCONNECT, "");
         MyClient.ShutDown();
     }
 

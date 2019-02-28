@@ -55,3 +55,74 @@
 10-58-43:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=ERROR_WRONGID
 10-58-51:No. 0 client disconnected : address is 127.0.0.1:53110
 10-58-51:Server Close
+12-29-52:Server Open : Server Address is 192.168.1.102
+12-29-59:Server Close
+17-11-33:Server Open : Server Address is 192.168.1.102
+17-11-42:No. 0 client connected : address is 127.0.0.1:60446
+17-11-55:Received Message : [0]/SIGNIN ID=reiy0902&PW=ksh159263
+17-11-55:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=ERROR_WRONGID
+17-11-56:Received Message : [0]/SIGNIN ID=reiy0902&PW=ksh159263
+17-11-56:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=ERROR_WRONGID
+17-11-59:Received Message : [0]/SIGNUP ID=reiy0902&PW=ksh159263
+17-11-59:Try to SignUp
+17-11-59:Parsed Data ID : reiy0902 PW : ksh159263
+17-11-59:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=CREATE
+17-11-59:New User Sign Up : reiy0902
+17-11-59:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN
+17-12-14:No. 1 client connected : address is 127.0.0.1:60472
+17-12-24:Received Message : [1]/SIGNIN ID=reiy0902&PW=ksh159263
+17-12-24:New User Sign In : reiy0902
+17-12-24:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN
+17-12-33:No. 0 client disconnected : address is 127.0.0.1:60446
+17-12-33:Server Close
+17-58-48:Server Open : Server Address is 192.168.1.102
+17-59-00:No. 0 client connected : address is 127.0.0.1:63017
+17-59-09:Received Message : [0]/SIGNUP ID=reiy0902&PW=ksh159263
+17-59-09:Try to SignUp
+17-59-09:Parsed Data ID : reiy0902 PW : ksh159263
+17-59-09:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=CREATE
+17-59-09:New User Sign Up : reiy0902
+17-59-09:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN
+17-59-17:No. 0 client disconnected : address is 127.0.0.1:63017
+17-59-17:Server Close
+18-18-22:Server Open : Server Address is 192.168.1.102
+18-18-27:No. 0 client connected : address is 127.0.0.1:64135
+18-18-38:Received Message : [0]/SIGNIN ID=reiy0902&PW=ksh159263
+18-19-36:Server Open : Server Address is 192.168.1.102
+18-19-42:No. 0 client connected : address is 127.0.0.1:64187
+18-19-49:Received Message : [0]/SIGNIN ID=reiy0902&PW=ksh159263
+18-19-49:New User Sign In : reiy0902
+18-19-49:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN&DATA={
+  "ID": "reiy0902",
+  "PW": "ksh159263",
+  "Win": 0,
+  "Lose": 0,
+  "Rate": 100.0,
+  "IsAvaliable": true
+}
+18-21-29:Server Open : Server Address is 192.168.1.102
+18-21-34:No. 0 client connected : address is 127.0.0.1:64270
+18-21-41:Received Message : [0]/SIGNIN ID=reiy0902&PW=ksh159263
+18-21-42:New User Sign In : reiy0902
+18-21-42:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN&DATA={"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-21-56:No. 0 client disconnected : address is 127.0.0.1:64270
+18-21-56:Server Close
+18-34-42:Server Open : Server Address is 192.168.1.102
+18-34-47:No. 0 client connected : address is 127.0.0.1:65052
+18-34-58:Received Message : [0]/SIGNIN ID=reiy0902&PW=ksh99
+18-34-58:Wrong User Tried To Sign Up : reiy0902 IP ADDRESS : 127.0.0.1:65052
+18-34-58:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=ERROR_WRONGPW
+18-35-02:Received Message : [0]/SIGNIN ID=reiy0902&PW=ksh159263
+18-35-02:New User Sign In : reiy0902
+18-35-02:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN&DATA={"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-35-16:No. 0 client disconnected : address is 127.0.0.1:65052
+18-35-16:Server Close
+18-48-05:Server Open : Server Address is 192.168.1.102
+18-48-16:No. 0 client connected : address is 127.0.0.1:49401
+18-48-24:Received Message : [0]/SIGNIN ID=reiy0902&PW=ksh159263
+18-48-25:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:49401
+18-48-25:Send Message : /NOTICE TYPE=LOGINSTATE&VALUE=SIGNIN&DATA={"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-48-31:Received Message : [0]/DISCONNECT 
+18-48-31:No. 0 client disconnected : address is 127.0.0.1:49401
+18-48-31:No. 0 client disconnected : address is 127.0.0.1:49401
+18-48-54:Server Close

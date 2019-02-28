@@ -13,7 +13,9 @@ namespace MyServer
             ERROR = 0,
             SIGNIN,
             SIGNUP,
+            DISCONNECT,
             NOTICE,                     // 서버 -> 클라로 보내는 알림. type=XXX&value=XXX 식으로 타입과 값이 정해져 있음.
+            MATCH
         }
 
         public enum NoticeType
@@ -28,6 +30,7 @@ namespace MyServer
             CREATE,                     // 계정 생성
             SIGNIN,                     // 계정 접속
             WARNING_EXIST,              // ( 생성 시 ) ID가 이미 존재함
+            ERROR_ACCESS,               // ( 로그인 시 ) 이미 접속 중인 ID
             ERROR_WRONGID,              // ( 로그인 시 ) 존재하지 않는 ID
             ERROR_WRONGPW,              // ( 로그인 시 ) 잘못된 PW
             ERROR_WRONGDATA,            // 잘못된 데이터 ( 통신 문제 )

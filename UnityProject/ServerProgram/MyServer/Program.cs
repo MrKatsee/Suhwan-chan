@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -13,9 +14,25 @@ namespace MyServer
     {
         public static string DIRECTORY = "User";
 
+        public static User ParseData(string data)
+        {
+            return JsonConvert.DeserializeObject<User>(data);
+        }
+
         public string ID { get; set; }
         public string PW { get; set; }
-        public bool isAvaliable
+        public int Win { get; set; }
+        public int Lose { get; set; }
+        public float Rate
+        {
+            get
+            {
+                if (Win + Lose <= 0) return 100f;
+                return (float)Win / (Win + Lose) * 100f;
+            }
+        }
+
+        public bool IsAvaliable
         {
             get
             {
@@ -36,11 +53,20 @@ namespace MyServer
             PW = _pw;
         }
 
+        public bool CheckID(string _id)
+        {
+            return string.Equals(ID, _id);
+        }
+
         public bool CheckPassword(string _pw)
         {
             return string.Equals(PW, _pw);
         }
 
+        public string ToData()
+        {
+            return JsonConvert.SerializeObject(this, Formatting.None);
+        }
     }
 
     public enum CommandType
