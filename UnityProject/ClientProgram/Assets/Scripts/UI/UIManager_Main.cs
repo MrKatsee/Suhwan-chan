@@ -28,7 +28,7 @@ public class UIManager_Main : MonoBehaviour {
 
     }
 
-    public void SetText_UserInfo(User _user)
+    public void SetText_UserInfo(MyUser _user)
     {
         text_ID.text = _user.ID;
         text_Win.text = _user.Win.ToString();

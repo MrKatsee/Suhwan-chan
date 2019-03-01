@@ -19,7 +19,7 @@ public class PlayManager : MonoBehaviour{
         }
     }
 
-    public User user;
+    public MyUser user;
 
     private void Init()
     {

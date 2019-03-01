@@ -21,7 +21,7 @@ namespace MyServer
         {
             DEFAULT = 0,
             MESSAGE,
-        DISCONNECT
+            DISCONNECT
         }
 
         public enum LoginType
@@ -67,7 +67,8 @@ namespace MyServer
         public enum CommandType
         {
             ERROR = 0,
-            EXIT
+            EXIT,
+            LIST,
         }
 
         public static T Parse<T>(string value) where T : Enum

@@ -170,9 +170,22 @@ namespace MyServer
                             case MessageType.DEFAULT: break;
                             case MessageType.NOTICE:
                                 {
-                                    string noticeType = message.Substring(0, message.IndexOf(' '));
-                                    string messageData = message.Substring(message.IndexOf(' ') + 1);
- 
+                                    string noticeType = message;
+                                    string messageData = string.Empty;
+                                    if(message.Contains(' '))
+                                    {
+                                        noticeType = message.Substring(0, message.IndexOf(' '));
+                                        messageData = message.Substring(message.IndexOf(' ') + 1);
+                                    }
+                                    switch (Parse<NoticeType>(noticeType))
+                                    {
+                                        case NoticeType.DEFAULT: break;
+                                        case NoticeType.DISCONNECT:
+                                            {
+                                                NetworkConnection.GetConnection(senderIndex).ShutDown();
+                                                break;
+                                            }
+                                    }
                                     break;
                                 }
                             case MessageType.LOGIN:
@@ -183,8 +196,13 @@ namespace MyServer
                                 }
                             case MessageType.ERROR:
                                 {
-                                    string errorType = message.Substring(0, message.IndexOf(' '));
-                                    string messageData = message.Substring(message.IndexOf(' ') + 1);
+                                    string errorType = message;
+                                    string messageData = string.Empty;
+                                    if (message.Contains(' '))
+                                    {
+                                        errorType = message.Substring(0, message.IndexOf(' '));
+                                        messageData = message.Substring(message.IndexOf(' ') + 1);
+                                    }
                                     switch (Parse<ErrorType>(errorType))
                                     {
                                         case ErrorType.DEFAULT: break;
@@ -203,188 +221,6 @@ namespace MyServer
                                     break;
                                 }
                         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        /*
-                        int senderIndex = Convert.ToInt32(message.Split(']')[0].Replace("[", ""));
-                        message = message.Substring(message.IndexOf("]") + 1);
-                        string[] splitMessage = message.Split(' ');
-                        string orderType = splitMessage[0].Replace("/", "").ToUpper();
-                        message = splitMessage[1];
-                        switch (NetworkMessage.ParseData<MessageType>(orderType))
-                        {
-                            case NetworkMessage.MessageType.SIGNIN:
-                                {
-                                    MyUser newUser = new MyUser();
-                                    string[] messageData = message.Split('&');
-                                    foreach (string datum in messageData)
-                                    {
-                                        string[] stringData = datum.Split('='); // stringData[0] 은 dataType stringData[1] 은 dataValue
-                                        switch (stringData[0].ToUpper())
-                                        {
-                                            case "ID":
-                                                {
-                                                    newUser.ID = stringData[1];
-                                                    break;
-                                                }
-                                            case "PW":
-                                                {
-                                                    newUser.PW = stringData[1];
-                                                    break;
-                                                }
-                                        }
-                                    }
-                                    if (newUser.IsAvaliable)
-                                    {
-                                        if (ResourceManager.CheckFile(string.Format("{0}/{1}.txt", MyUser.DIRECTORY, newUser.ID)))
-                                        {
-                                            MyUser targetUser = ResourceManager.LoadFile<MyUser>(string.Format("{0}/{1}.txt", MyUser.DIRECTORY, newUser.ID));
-                                            if (targetUser.CheckPassword(newUser.PW))
-                                            {
-                                                if (NetworkConnection.IsUserConnected(newUser))
-                                                {
-                                                    // 이미 접속 중인 계정이 있다면..?
-                                                    LogManager.WriteLog("Warning! Already Accessed Account : " + newUser.ID + "IP ADDRESS : " + NetworkConnection.GetConnection(senderIndex).Address);
-                                                    Send(
-                                                        MessageType.NOTICE,
-                                                        CastingType.UNICAST,
-                                                        NoticeMessage(NoticeType.LOGINSTATE, LoginState.ERROR_ACCESS),
-                                                        senderIndex);
-                                                }
-                                                else
-                                                {
-                                                    LogManager.WriteLog("New User Sign In : " + newUser.ID + " IP ADDRESS : " + NetworkConnection.GetConnection(senderIndex).Address);
-                                                    NetworkConnection.GetConnection(senderIndex).user = newUser;
-                                                    // 계정 정보 전송
-                                                    // 이 부분에서 귓말같은 걸 한꺼번에 전송
-                                                    Send(
-                                                        MessageType.NOTICE,
-                                                        CastingType.UNICAST,
-                                                        NoticeMessage(NoticeType.LOGINSTATE, LoginState.SIGNIN) + "&DATA=" +
-                                                        targetUser.ToData(),
-                                                        senderIndex);
-                                                }
-                                            }
-                                            else
-                                            {
-                                                LogManager.WriteLog("Wrong User Tried To Sign Up : " + newUser.ID + " IP ADDRESS : " + NetworkConnection.GetConnection(senderIndex).Address);
-                                                // 패스워드 에러 메시지 전송
-                                                Send(
-                                                    MessageType.NOTICE,
-                                                    CastingType.UNICAST,
-                                                    NoticeMessage(NoticeType.LOGINSTATE, LoginState.ERROR_WRONGPW),
-                                                    senderIndex);
-                                            }
-                                        }
-                                        else
-                                        {
-                                            // 아이디 에러 메시지 전송
-                                            Send(
-                                                MessageType.NOTICE,
-                                                CastingType.UNICAST,
-                                                NoticeMessage(NoticeType.LOGINSTATE, LoginState.ERROR_WRONGID),
-                                                senderIndex);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        // 에러 메시지 전송
-                                        Send(
-                                                MessageType.NOTICE,
-                                                CastingType.UNICAST,
-                                                NoticeMessage(NoticeType.LOGINSTATE, LoginState.ERROR_WRONGDATA),
-                                                senderIndex);
-                                    }
-                                    break;
-                                }
-                            case NetworkMessage.MessageType.SIGNUP:
-                                {
-                                    LogManager.WriteLog("Try to SignUp");
-                                    MyUser newUser = new MyUser();
-                                    string[] messageData = message.Split('&');
-                                    foreach (string datum in messageData)
-                                    {
-                                        string[] stringData = datum.Split('='); // stringData[0] 은 dataType stringData[1] 은 dataValue
-                                        switch (stringData[0].ToUpper())
-                                        {
-                                            case "ID":
-                                                {
-                                                    newUser.ID = stringData[1];
-                                                    break;
-                                                }
-                                            case "PW":
-                                                {
-                                                    newUser.PW = stringData[1];
-                                                    break;
-                                                }
-                                        }
-                                    }
-                                    LogManager.WriteLog("Parsed Data ID : " + newUser.ID + " PW : " + newUser.PW);
-                                    if (newUser.IsAvaliable)
-                                    {
-                                        if (!ResourceManager.CheckFile(string.Format("{0}/{1}.txt", MyUser.DIRECTORY, newUser.ID)))
-                                        {
-                                            // 계정 작성중 메시지 전송
-                                            Send(
-                                                MessageType.NOTICE,
-                                                CastingType.UNICAST,
-                                                NoticeMessage(NoticeType.LOGINSTATE, LoginState.CREATE),
-                                                senderIndex);
-                                            LogManager.WriteLog("New User Sign Up : " + newUser.ID + " IP ADDRESS : " + NetworkConnection.GetConnection(senderIndex).Address);
-                                            ResourceManager.SaveFile<MyUser>(
-                                                string.Format("{0}/{1}.txt", MyUser.DIRECTORY, newUser.ID),
-                                                newUser);
-                                            // 계정 작성 완료, 접속 완료 메시지 전송
-                                            Send(
-                                                MessageType.NOTICE,
-                                                CastingType.UNICAST,
-                                                NoticeMessage(NoticeType.LOGINSTATE, LoginState.SIGNIN) + "&DATA=" +
-                                                newUser.ToData(),
-                                                senderIndex);
-                                        }
-                                        else
-                                        {
-                                            // 계정 ID가 이미 존재한다는 메시지 전송
-                                            Send(
-                                                MessageType.NOTICE,
-                                                CastingType.UNICAST,
-                                                NoticeMessage(NoticeType.LOGINSTATE, LoginState.WARNING_EXIST),
-                                                senderIndex);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        // 에러 메시지 전송
-                                        Send(
-                                                MessageType.NOTICE,
-                                                CastingType.UNICAST,
-                                                NoticeMessage(NoticeType.LOGINSTATE, LoginState.ERROR_WRONGDATA),
-                                                senderIndex);
-                                        LogManager.WriteLog("Try to SignUp But ERROR_1");
-                                    }
-                                    break;
-                                }
-                            case NetworkMessage.MessageType.DISCONNECT:
-                                {
-                                    NetworkConnection.GetConnection(senderIndex).ShutDown();
-                                    break;
-                                }
-                            case NetworkMessage.MessageType.ERROR:
-                                break;
-                        }
-                        */
                     }
                 }
                 Thread.Sleep(50);   // 메시지의 처리는 0.05초 당 한 번 돌리면 되겠지.

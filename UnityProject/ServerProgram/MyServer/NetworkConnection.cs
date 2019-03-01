@@ -48,10 +48,27 @@ namespace MyServer
             }
         }
 
+        public static string GetConnectionInfo()
+        {
+            string info = string.Empty;
+            for(int i = 0; i < MAXINDEX; ++i)
+            {
+                NetworkConnection networkConnection = GetConnection(i);
+                if (networkConnection == null) continue;
+                info += "No." + i.ToString() + " ID : " + networkConnection.user?.ID + " Address : " + networkConnection.Address + "\n";
+            }
+            if (string.IsNullOrEmpty(info)) info += "접속 중인 클라이언트가 없습니다.";
+            else info = info.Substring(0, info.Length - 1);
+            return info;
+        }
+
         public static NetworkConnection GetConnection(int _index)
         {
-            if (0 <= _index && _index < MAXINDEX && conn[_index] != null) return conn[_index];
-            else return null;
+            lock (conn)
+            {
+                if (0 <= _index && _index < MAXINDEX && conn[_index] != null) return conn[_index];
+                else return null;
+            }
         }
 
         public static NetworkConnection GetConnectionByUser(MyUser user)

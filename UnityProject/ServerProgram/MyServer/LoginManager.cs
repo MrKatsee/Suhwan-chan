@@ -16,6 +16,7 @@ namespace MyServer
         {
             userData = _userData;
             userConnection = NetworkConnection.GetConnection(senderIndex);
+            userConnection.user = userData;
             userConnection.OnDisConnected += OnDisConnected;
         }
 
@@ -73,8 +74,13 @@ namespace MyServer
 
         public static void Execute(int senderIndex, string message)
         {
-            string loginType = message.Substring(0, message.IndexOf(' '));
-            string messageData = message.Substring(message.IndexOf(' ') + 1);
+            string loginType = message;
+            string messageData = string.Empty;
+            if(message.Contains(' '))
+            {
+                loginType = message.Substring(0, message.IndexOf(' '));
+                messageData = message.Substring(message.IndexOf(' ') + 1);
+            }
             switch (Parse<LoginType>(loginType))
             {
                 case LoginType.DEFAULT: break;

@@ -16,7 +16,6 @@ namespace MyServer
         static void Main(string[] args)
         {
             ServerManager.Start();
-		LogManager.WriteLog("Server Start!");
             while (true)
             {
                 string input = Console.ReadLine();
@@ -30,6 +29,11 @@ namespace MyServer
                     case CommandType.EXIT:
                         {
                             goto EXIT;
+                        }
+                    case CommandType.LIST:
+                        {
+                            Console.WriteLine(NetworkConnection.GetConnectionInfo());
+                            break;
                         }
                 }
             }

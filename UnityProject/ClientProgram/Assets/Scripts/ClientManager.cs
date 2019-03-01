@@ -9,6 +9,7 @@ using UnityEngine;
 using static NetworkMessage;
 using static MyEnum;
 using UnityEngine.UI;
+using System.Linq;
 
 public class ClientManager : MonoBehaviour
 {
@@ -203,7 +204,7 @@ public class ClientManager : MonoBehaviour
                             {
                                 case LoginType.SIGNIN:
                                     {
-                                        PlayManager.Instance.user = User.ParseData(messageData);
+                                        PlayManager.Instance.user = MyUser.ParseData(messageData);
                                         UIManager_Main.instance.ui_Loading.StopLoading();
                                         UIManager_Main.instance.ui_Login.SetActive(false);
                                         UIManager_Main.instance.ui_Toast.MakeToast(PlayManager.Instance.user.ID + "님, 환영합니다!", 3f);
@@ -218,9 +219,13 @@ public class ClientManager : MonoBehaviour
                         }
                     case MessageType.ERROR:
                         {
-                            /*
-                            string errorType = message.Substring(0, message.IndexOf(' '));
-                            string messageData = message.Substring(message.IndexOf(' ') + 1);*/
+                            string errorType = message;
+                            string messageData = string.Empty;
+                            if(message.Contains(' '))
+                            {
+                                errorType = message.Substring(0, message.IndexOf(' '));
+                                messageData = message.Substring(message.IndexOf(' ') + 1);
+                            }
                             switch (Parse<ErrorType>(message))
                             {
                                 case ErrorType.DEFAULT: break;
