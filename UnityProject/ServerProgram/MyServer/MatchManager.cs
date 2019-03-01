@@ -9,19 +9,18 @@ namespace MyServer
 {
     class Match
     {
-        User user_1;
-        User user_2;
+        MyUser user_1;
+        MyUser user_2;
 
-        public Match(User newUser_1, User newUser_2)
+        public Match(MyUser newUser_1, MyUser newUser_2)
         {
             user_1 = newUser_1;
             user_2 = newUser_2;
             // 여기서 메시지 보내자.
 
             ServerManager.Send(
-                NetworkMessage.MessageType.MATCH,
-                NetworkMessage.CastingType.MULTICAST,
                 "",
+                MyEnum.CastType.MULTICAST,
                 NetworkConnection.GetConnectionByUser(user_1).index,
                 NetworkConnection.GetConnectionByUser(user_2).index);
 
@@ -30,12 +29,12 @@ namespace MyServer
 
     static class MatchManager
     {
-        private static Queue<User> matchUsers = new Queue<User>();
+        private static Queue<MyUser> matchUsers = new Queue<MyUser>();
 
         private static bool isAwake = false;
         private static Thread thread_MatchMaking; 
 
-        public static void SyncEnqueue(User newUser)
+        public static void SyncEnqueue(MyUser newUser)
         {
             lock (matchUsers)
             {
@@ -57,6 +56,11 @@ namespace MyServer
             isAwake = false;
         }
 
+        public static void Execute(int senderIndex, string message)
+        {
+
+        }
+
         private static void MatchMaking()
         {
             while (isAwake)
@@ -66,8 +70,8 @@ namespace MyServer
                     if(matchUsers.Count >= 2)
                     {
                         // MMR를 넣으려면 여기서 계산.
-                        User user_1 = matchUsers.Dequeue();
-                        User user_2 = matchUsers.Dequeue();
+                        MyUser user_1 = matchUsers.Dequeue();
+                        MyUser user_2 = matchUsers.Dequeue();
                         Match newMatch = new Match(user_1, user_2);
                     }
                 }

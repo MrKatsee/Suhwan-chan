@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using static MyServer.NetworkMessage;
+using static MyServer.MyEnum;
 
 namespace MyServer
 {
@@ -88,35 +89,33 @@ namespace MyServer
             LogManager.WriteLog("Server Close");
         }
 
-        public static void Send(MessageType messageType, CastingType castingType, string data)
+        public static void Send(string data, CastType castType)
         {
-            string message = Encapsulation(messageType, data);
-            LogManager.WriteLog("Send Message : " + message);
-            switch (castingType)
+            LogManager.WriteLog("Send Message : " + data);
+            switch (castType)
             {
-                case CastingType.BROADCAST:
+                case CastType.BROADCAST:
                     for (int i = 0; i < NetworkConnection.MAXINDEX; ++i)
                     {
                         NetworkConnection conn = NetworkConnection.GetConnection(i);
-                        if (conn != null) conn.SendMsg(message);
+                        if (conn != null) conn.SendMsg(data);
                     }
                     break;
             }
         }
 
-        public static void Send(MessageType messageType, CastingType castingType, string data, params int[] index)
+        public static void Send(string data, CastType castType, params int[] index)
         {
-            string message = Encapsulation(messageType, data);
-            LogManager.WriteLog("Send Message : " + message);
-            switch (castingType)
+            LogManager.WriteLog("Send Message : " + data);
+            switch (castType)
             {
-                case CastingType.UNICAST:
+                case CastType.UNICAST:
                     {
                         NetworkConnection conn = NetworkConnection.GetConnection(index[0]);
-                        if (conn != null) conn.SendMsg(message);
+                        if (conn != null) conn.SendMsg(data);
                         break;
                     }
-                case CastingType.XORCAST:
+                case CastType.XORCAST:
                     {
                         for (int i = 0; i < NetworkConnection.MAXINDEX; ++i)
                         {
@@ -132,27 +131,24 @@ namespace MyServer
                             if (!isExcpetion)
                             {
                                 NetworkConnection conn = NetworkConnection.GetConnection(i);
-                                if (conn != null) conn.SendMsg(message);
+                                if (conn != null) conn.SendMsg(data);
                             }
                         }
                         break;
                     }
-                case CastingType.MULTICAST:
+                case CastType.MULTICAST:
                     {
                         for (int i = 0; i < index.Length; ++i)
                         {
                             NetworkConnection conn = NetworkConnection.GetConnection(index[i]);
-                            if (conn != null) conn.SendMsg(message);
+                            if (conn != null) conn.SendMsg(data);
                         }
                         break;
                     }
             }
         }
 
-        public static string NoticeMessage<T>(NoticeType noticeType, T value)
-        {
-            return string.Format("TYPE={0}&VALUE={1}", Enum.GetName(typeof(NoticeType), noticeType), Enum.GetName(typeof(T), value));
-        }
+        // 메시지는 /[senderIndex]MessageType MessageType_2 data 로 이루어진다.
 
         public static void Update()
         {
@@ -166,6 +162,63 @@ namespace MyServer
                         string message = NetworkMessage.SyncDequeue();
                         LogManager.WriteLog("Received Message : " + message);
                         int senderIndex = Convert.ToInt32(message.Split(']')[0].Replace("[", ""));
+                        message = message.Replace("/", "").Substring(message.IndexOf(']') + 1);
+                        string messageType = message.Substring(0, message.IndexOf(' '));
+                        message = message.Substring(message.IndexOf(' ') + 1);
+                        switch (Parse<MessageType>(messageType))
+                        {
+                            case MessageType.DEFAULT: break;
+                            case MessageType.NOTICE:
+                                {
+                                    string noticeType = message.Substring(0, message.IndexOf(' '));
+                                    string messageData = message.Substring(message.IndexOf(' ') + 1);
+ 
+                                    break;
+                                }
+                            case MessageType.LOGIN:
+                                {
+                                    // 로그인과 관련된 메시지는 모두 LoginManager에게 맡긴다.
+                                    LoginManager.Execute(senderIndex, message);
+                                    break;
+                                }
+                            case MessageType.ERROR:
+                                {
+                                    string errorType = message.Substring(0, message.IndexOf(' '));
+                                    string messageData = message.Substring(message.IndexOf(' ') + 1);
+                                    switch (Parse<ErrorType>(errorType))
+                                    {
+                                        case ErrorType.DEFAULT: break;
+                                        case ErrorType.SHUTDOWN:
+                                            {
+                                                NetworkConnection.GetConnection(senderIndex).ShutDown();
+                                                break;
+                                            }
+                                    }
+                                    break;
+                                }
+                            case MessageType.MATCH:
+                                {
+                                    // 매치와 관련된 메시지는 모두 MatchManager에게 맡긴다.
+                                    MatchManager.Execute(senderIndex, message);
+                                    break;
+                                }
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        /*
+                        int senderIndex = Convert.ToInt32(message.Split(']')[0].Replace("[", ""));
                         message = message.Substring(message.IndexOf("]") + 1);
                         string[] splitMessage = message.Split(' ');
                         string orderType = splitMessage[0].Replace("/", "").ToUpper();
@@ -174,7 +227,7 @@ namespace MyServer
                         {
                             case NetworkMessage.MessageType.SIGNIN:
                                 {
-                                    User newUser = new User();
+                                    MyUser newUser = new MyUser();
                                     string[] messageData = message.Split('&');
                                     foreach (string datum in messageData)
                                     {
@@ -195,9 +248,9 @@ namespace MyServer
                                     }
                                     if (newUser.IsAvaliable)
                                     {
-                                        if (ResourceManager.CheckFile(string.Format("{0}/{1}.txt", User.DIRECTORY, newUser.ID)))
+                                        if (ResourceManager.CheckFile(string.Format("{0}/{1}.txt", MyUser.DIRECTORY, newUser.ID)))
                                         {
-                                            User targetUser = ResourceManager.LoadFile<User>(string.Format("{0}/{1}.txt", User.DIRECTORY, newUser.ID));
+                                            MyUser targetUser = ResourceManager.LoadFile<MyUser>(string.Format("{0}/{1}.txt", MyUser.DIRECTORY, newUser.ID));
                                             if (targetUser.CheckPassword(newUser.PW))
                                             {
                                                 if (NetworkConnection.IsUserConnected(newUser))
@@ -259,7 +312,7 @@ namespace MyServer
                             case NetworkMessage.MessageType.SIGNUP:
                                 {
                                     LogManager.WriteLog("Try to SignUp");
-                                    User newUser = new User();
+                                    MyUser newUser = new MyUser();
                                     string[] messageData = message.Split('&');
                                     foreach (string datum in messageData)
                                     {
@@ -281,7 +334,7 @@ namespace MyServer
                                     LogManager.WriteLog("Parsed Data ID : " + newUser.ID + " PW : " + newUser.PW);
                                     if (newUser.IsAvaliable)
                                     {
-                                        if (!ResourceManager.CheckFile(string.Format("{0}/{1}.txt", User.DIRECTORY, newUser.ID)))
+                                        if (!ResourceManager.CheckFile(string.Format("{0}/{1}.txt", MyUser.DIRECTORY, newUser.ID)))
                                         {
                                             // 계정 작성중 메시지 전송
                                             Send(
@@ -290,8 +343,8 @@ namespace MyServer
                                                 NoticeMessage(NoticeType.LOGINSTATE, LoginState.CREATE),
                                                 senderIndex);
                                             LogManager.WriteLog("New User Sign Up : " + newUser.ID + " IP ADDRESS : " + NetworkConnection.GetConnection(senderIndex).Address);
-                                            ResourceManager.SaveFile<User>(
-                                                string.Format("{0}/{1}.txt", User.DIRECTORY, newUser.ID),
+                                            ResourceManager.SaveFile<MyUser>(
+                                                string.Format("{0}/{1}.txt", MyUser.DIRECTORY, newUser.ID),
                                                 newUser);
                                             // 계정 작성 완료, 접속 완료 메시지 전송
                                             Send(
@@ -331,6 +384,7 @@ namespace MyServer
                             case NetworkMessage.MessageType.ERROR:
                                 break;
                         }
+                        */
                     }
                 }
                 Thread.Sleep(50);   // 메시지의 처리는 0.05초 당 한 번 돌리면 되겠지.

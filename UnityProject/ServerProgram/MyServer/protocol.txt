@@ -1,8 +1,6 @@
 서버 -> 클라 메시지
-/ORDER				명령
-/NOTICE				알림
-/NOTICE SIGNUP			알림 - 계정 작성 중
-/NOTICE SIGNIN {0}		알림 - 계정 접속 {계정 정보}
+/NOTICE MESSAGE {0} {1}		알림 - 귓속말 	{계정 정보} {귓속말 내용}
+/LOGIN SIGNIN {0}			로그인 - 계정 접속 	{계정 정보}
 /ERROR EXIST			오류 - 계정 존재함
 /ERROR ACCESS			오류 - 계정 접속 중
 /ERROR WRONGID			오류 - 잘못된 ID
@@ -13,13 +11,36 @@
 /MATCH STOP			매치 - 중단					// 상대방 연결 끊김 등 진행 불가능 시.
 /MATCH WIN			매치 - 승리
 /MATCH LOSE			매치 - 패배
-/WHISPER {0} {1}			귓속말 		{아이디 정보} {내용}
+/MATCH DRAW			매치 - 무승부
+
 
 클라 -> 서버 메시지
-/SIGNIN ID={0}&PW={1}   		로그인		{아이디 정보} {비밀번호 정보}
-/SIGNUP ID={0}&PW={1}   		회원가입		{아이디 정보} {비밀번호 정보}
+/LOGIN SIGNIN ID={0}&PW={1}   	로그인 - 접속	{아이디 정보} {비밀번호 정보}
+/LOGIN SIGNUP ID={0}&PW={1}   	로그인 - 회원가입	{아이디 정보} {비밀번호 정보}
+/NOTICE MESSAGE {0} {1}		알림 - 귓속말 	{계정 정보} {귓속말 내용}
 /MATCH START			매치 - 시작					// 매치메이킹 시작 버튼을 누르면 호출, 서버는 해당 플레이어를 큐에 넣는다.
 /MATCH READY			매치 - 준비 완료					// 배틀 씬 로드 완료, 상대방 정보 로드 완료 시 서버로 호출, 서버는 양 측에서 이 메시지를 받아야 게임을 시작한다.
 /MATCH HAND {0}			매치 - 사용	{내용}				// 가위바위보 게임이므로 0, 1, 2 중 하나.
 /MATCH BATTLE			매치 - 배틀					// 5초 클라이언트 연산이 끝나고 수신, 서버는 양 측에서 이 메시지를 받아야 결과를 보내준다.
-/DISCONNECT			연결 끊어짐	
+/ERROR SHUTDOWN	
+
+
+작동 루틴
+
+회원가입
+클라 -> 서버 /LOGIN SIGNUP ID={0}&PW={1} (ID와 PW의 검사는 클라에서 처리)
+서버 -> 클라 /LOGIN SIGNIN {0} 또는 /ERROR EXIST
+
+로그인
+클라 -> 서버 /LOGIN SIGNIN ID={0}&PW={1}
+서버 -> 클라 /LOGIN SIGNIN {0} 또는 /ERROR ACCESS /ERROR WRONGID /ERROR WRONGPW
+
+매치메이킹
+클라 -> 서버 /MATCH START 				매치 요청을 하면 서버의 큐에 넣는다.
+서버 -> 클라 /MATCH START {0} 				상대방 ID 정보를 보내준다.
+클라 -> 서버 /MATCH READY				게임을 시작할 준비가 되었음을 알린다. 서버는 양 측 플레이어 모두에게서 이 메시지를 받아야만 한다.
+서버 -> 클라 /MATCH WAIT {0}				게임은 5초간 낼 것을 정하게 한다. 그때까지 대기. (아니면 대기 판정을 서버에서 할까?)
+클라 -> 서버 /MATCH HAND {0}				대기시간 동안 클라이언트는 서버에 무엇을 선택했는지 전송한다.
+클라 -> 서버 /MATCH BATTLE				5초가 지나면 클라이언트가 서버에 수신한다. 서버는 양 측에서 이 메시지를 받아야 결과를 보내준다. 혹은 서버에서 시간을 계산할 수도 있다.
+서버 -> 클라 /MATCH WIN /MATCH LOSE /MATCH DRAW	서버는 클라가 마지막으로 보낸 HAND 메시지를 통해 승패 또는 무승부를 판별한다. 무승부일 시, 클라는 다시 READY 메시지를 보낸다.
+

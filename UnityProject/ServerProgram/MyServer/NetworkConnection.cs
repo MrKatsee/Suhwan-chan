@@ -54,7 +54,7 @@ namespace MyServer
             else return null;
         }
 
-        public static NetworkConnection GetConnectionByUser(User user)
+        public static NetworkConnection GetConnectionByUser(MyUser user)
         {
             for(int i = 0; i < Count; ++i)
             {
@@ -66,7 +66,7 @@ namespace MyServer
             return null;
         }
 
-        public static bool IsUserConnected(User user)
+        public static bool IsUserConnected(MyUser user)
         {
             lock (conn)
             {
@@ -103,7 +103,7 @@ namespace MyServer
 
         public bool IsConnected { get; private set; }
         public int index;
-        public User user;
+        public MyUser user;
         public string Address { get; private set; }
 
         Socket socket;
@@ -111,6 +111,9 @@ namespace MyServer
         StreamReader reader;
         StreamWriter writer;
         Thread thread_Receiver;
+
+        public delegate void EventHandler_NetworkConnection(NetworkConnection networkConnection);
+        public event EventHandler_NetworkConnection OnDisConnected;
 
         public NetworkConnection(int _index, Socket _socket)
         {
@@ -189,6 +192,7 @@ namespace MyServer
                 finally
                 {
                     socket.Close();
+                    OnDisConnected?.Invoke(this);
                     conn[index] = null;
                     LogManager.WriteLog(
                         string.Format("No. {0} client disconnected : address is {1}", this.index, this.Address));
