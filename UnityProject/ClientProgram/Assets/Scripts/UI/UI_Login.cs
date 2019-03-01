@@ -9,8 +9,8 @@ public class UI_Login : MonoBehaviour {
     private InputField inputField_ID;
     private InputField inputField_PW;
 
-    private static string REGEX_ID = "/^[a-z0-9_-]{3,16}$/";
-    private static string REGEX_PW = "/^[a-z0-9_-]{6,18}$/";
+    private static string REGEX_ID = @"/^[a-z0-9_-]{3,16}$/";
+    private static string REGEX_PW = @"/^[a-z0-9_-]{6,18}$/";
 
     private void Awake()
     {
@@ -34,25 +34,27 @@ public class UI_Login : MonoBehaviour {
     void OnClickSignIn()
     {
         if (!inputField_ID || !inputField_PW) return;
-        if(!Regex.IsMatch(inputField_ID.text, REGEX_ID) || !Regex.IsMatch(inputField_PW.text, REGEX_PW))
+        if (string.IsNullOrEmpty(inputField_ID.text) || (string.IsNullOrEmpty(inputField_PW.text)))
         {
             UIManager_Main.instance.ui_Toast.MakeToast("올바르지 않은 ID 또는 PW입니다!", 3f);
             return;
         }
         UIManager_Main.instance.ui_Loading.StartLoading("서버의 응답을 기다리는 중......");
-        ClientManager.Send(NetworkMessage.MessageType.SIGNIN, string.Format("ID={0}&PW={1}", inputField_ID.text, inputField_PW.text)); 
+        MyUser newUser = new MyUser(inputField_ID.text, inputField_PW.text);
+        ClientManager.Send("/LOGIN SIGNIN " + newUser.ToData());
     }
 
     void OnClickSignUp()
     {
         if (!inputField_ID || !inputField_PW) return;
-        if (!Regex.IsMatch(inputField_ID.text, REGEX_ID) || !Regex.IsMatch(inputField_PW.text, REGEX_PW))
+        if (string.IsNullOrEmpty(inputField_ID.text) || (string.IsNullOrEmpty(inputField_PW.text)))
         {
             UIManager_Main.instance.ui_Toast.MakeToast("올바르지 않은 ID 또는 PW입니다!", 3f);
             return;
         }
         UIManager_Main.instance.ui_Loading.StartLoading("서버의 응답을 기다리는 중......");
-        ClientManager.Send(NetworkMessage.MessageType.SIGNUP, string.Format("ID={0}&PW={1}", inputField_ID.text, inputField_PW.text));
+        MyUser newUser = new MyUser(inputField_ID.text, inputField_PW.text);
+        ClientManager.Send("/LOGIN SIGNUP " + newUser.ToData());
     }
 
 }

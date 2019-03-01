@@ -16,6 +16,7 @@ namespace MyServer
         static void Main(string[] args)
         {
             ServerManager.Start();
+		LogManager.WriteLog("Server Start!");
             while (true)
             {
                 string input = Console.ReadLine();

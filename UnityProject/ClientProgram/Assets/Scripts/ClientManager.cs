@@ -7,6 +7,7 @@ using System;
 using System.Text;
 using UnityEngine;
 using static NetworkMessage;
+using static MyEnum;
 using UnityEngine.UI;
 
 public class ClientManager : MonoBehaviour
@@ -61,7 +62,7 @@ public class ClientManager : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    NetworkMessage.Enqueue("Exception : " + e.Message);
+                    MyDebug.Log("Exception : " + e.Message);
                 }
             }
             MyDebug.Log("서버에 연결되었습니다.");
@@ -79,7 +80,7 @@ public class ClientManager : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    MyDebug.Log(e.Message);
+                    MyDebug.Log("Exception : " + e.Message);
                 }
             }
             else
@@ -150,10 +151,9 @@ public class ClientManager : MonoBehaviour
 
     public static ClientManager instance = null;
 
-    public static void Send(MessageType messageType, string data)
+    public static void Send(string data)
     {
-        string message = Encapsulation(messageType, data);
-        MyClient.SendMsg(message);
+        MyClient.SendMsg(data);
     }
 
     private void Awake()
@@ -180,105 +180,77 @@ public class ClientManager : MonoBehaviour
         int msgCount = NetworkMessage.GetCount();
         if(msgCount > 0)
         {
-            for(int loop = 0; loop < msgCount; ++loop)
+            for (int loop = 0; loop < msgCount; ++loop)
             {
                 string message = NetworkMessage.SyncDequeue();
                 MyDebug.Log(message);
                 LogManager.WriteLog("Received Message : " + message);
-                string[] splitMessage = message.Split(' ');
-                string orderType = splitMessage[0].Replace("/", "").ToUpper();
-                message = splitMessage[1];
-                switch (NetworkMessage.ParseData<MessageType>(orderType))
+                message = message.Replace("/", "");
+                string messageType = message.Substring(0, message.IndexOf(' '));
+                message = message.Substring(message.IndexOf(' ') + 1);
+                switch (Parse<MessageType>(messageType))
                 {
+                    case MessageType.DEFAULT: break;
                     case MessageType.NOTICE:
                         {
-                            string[] messageData = message.Split('&');
-                            string typeData = string.Empty;
-                            string valueData = string.Empty;
-                            string noticeData = string.Empty;
-                            foreach (string datum in messageData)
+                            break;
+                        }
+                    case MessageType.LOGIN:
+                        {
+                            string loginType = message.Substring(0, message.IndexOf(' '));
+                            string messageData = message.Substring(message.IndexOf(' ') + 1);
+                            switch (Parse<LoginType>(loginType))
                             {
-                                string[] stringData = datum.Split('='); // stringData[0] 은 dataType stringData[1] 은 dataValue
-                                switch (stringData[0].ToUpper())
-                                {
-                                    case "TYPE":
-                                        {
-                                            typeData = stringData[1];
-                                            break;
-                                        }
-                                    case "VALUE":
-                                        {
-                                            valueData = stringData[1];
-                                            break;
-                                        }
-                                    case "DATA":
-                                        {
-                                            noticeData = stringData[1];
-                                            break;
-                                        }
-                                }
-                            }
-                            switch (NetworkMessage.ParseData<NoticeType>(typeData))
-                            {
-                                case NoticeType.LOGINSTATE:
+                                case LoginType.SIGNIN:
                                     {
-                                        switch (NetworkMessage.ParseData<LoginState>(valueData))
-                                        {
-                                            case LoginState.CREATE:
-                                                {
-                                                    UIManager_Main.instance.ui_Loading.StartLoading("계정 작성 중......");
-                                                    break;
-                                                }
-                                            case LoginState.SIGNIN:
-                                                {
-                                                    PlayManager.Instance.user = User.ParseData(noticeData);
-                                                    UIManager_Main.instance.ui_Loading.StopLoading();
-                                                    UIManager_Main.instance.ui_Login.SetActive(false);
-                                                    UIManager_Main.instance.ui_Toast.MakeToast(PlayManager.Instance.user.ID + "님, 환영합니다!", 3f);
-                                                    break;
-                                                }
-                                            case LoginState.WARNING_EXIST:
-                                                {
-                                                    UIManager_Main.instance.ui_Loading.StopLoading();
-                                                    UIManager_Main.instance.ui_Toast.MakeToast("이미 존재하는 ID입니다.", 3f);
-                                                    break;
-                                                }
-                                            case LoginState.ERROR_ACCESS:
-                                                {
-                                                    UIManager_Main.instance.ui_Loading.StopLoading();
-                                                    UIManager_Main.instance.ui_Toast.MakeToast("이미 접속 중인 ID입니다!", 3f);
-                                                    break;
-                                                }
-                                            case LoginState.ERROR_WRONGID:
-                                                {
-                                                    UIManager_Main.instance.ui_Loading.StopLoading();
-                                                    UIManager_Main.instance.ui_Toast.MakeToast("존재하지 않는 ID입니다.", 3f);
-                                                    break;
-                                                }
-                                            case LoginState.ERROR_WRONGPW:
-                                                {
-                                                    UIManager_Main.instance.ui_Loading.StopLoading();
-                                                    UIManager_Main.instance.ui_Toast.MakeToast("잘못된 비밀번호입니다.", 3f);
-                                                    break;
-                                                }
-                                            case LoginState.ERROR_WRONGDATA:
-                                                {
-                                                    UIManager_Main.instance.ui_Loading.StopLoading();
-                                                    UIManager_Main.instance.ui_Toast.MakeToast("네트워크 연결 상태를 확인해 주세요.", 3f);
-                                                    break;
-                                                }
-                                            case LoginState.ERROR:
-                                                break;
-                                        }
+                                        PlayManager.Instance.user = User.ParseData(messageData);
+                                        UIManager_Main.instance.ui_Loading.StopLoading();
+                                        UIManager_Main.instance.ui_Login.SetActive(false);
+                                        UIManager_Main.instance.ui_Toast.MakeToast(PlayManager.Instance.user.ID + "님, 환영합니다!", 3f);
                                         break;
                                     }
-                                case NoticeType.ERROR:
-                                    break;
                             }
                             break;
                         }
+                    case MessageType.MATCH:
+                        {
+                            break;
+                        }
                     case MessageType.ERROR:
-                        break;
+                        {
+                            /*
+                            string errorType = message.Substring(0, message.IndexOf(' '));
+                            string messageData = message.Substring(message.IndexOf(' ') + 1);*/
+                            switch (Parse<ErrorType>(message))
+                            {
+                                case ErrorType.DEFAULT: break;
+                                case ErrorType.EXIST:
+                                    {
+                                        UIManager_Main.instance.ui_Loading.StopLoading();
+                                        UIManager_Main.instance.ui_Toast.MakeToast("이미 존재하는 ID입니다.", 3f);
+                                        break;
+                                    }
+                                case ErrorType.ACCESS:
+                                    {
+                                        UIManager_Main.instance.ui_Loading.StopLoading();
+                                        UIManager_Main.instance.ui_Toast.MakeToast("이미 접속 중인 ID입니다!", 3f);
+                                        break;
+                                    }
+                                case ErrorType.WRONGID:
+                                    {
+                                        UIManager_Main.instance.ui_Loading.StopLoading();
+                                        UIManager_Main.instance.ui_Toast.MakeToast("존재하지 않는 ID입니다.", 3f);
+                                        break;
+                                    }
+                                case ErrorType.WRONGPW:
+                                    {
+                                        UIManager_Main.instance.ui_Loading.StopLoading();
+                                        UIManager_Main.instance.ui_Toast.MakeToast("잘못된 비밀번호입니다.", 3f);
+                                        break;
+                                    }
+                            }
+                            break;
+                        }
                 }
             }
         }
@@ -287,7 +259,7 @@ public class ClientManager : MonoBehaviour
     private void OnDestroy()
     {
         StopAllCoroutines();
-        Send(MessageType.DISCONNECT, "");
+        Send("/NOTICE DISCONNECT");
         MyClient.ShutDown();
     }
 

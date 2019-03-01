@@ -17,7 +17,8 @@ public class MyEnum
     public enum NoticeType
     {
         DEFAULT = 0,
-        MESSAGE
+        MESSAGE,
+        DISCONNECT
     }
 
     public enum LoginType

@@ -1,2 +1,31 @@
 17-31-39:Server Open : Server Address is 192.168.1.102
 17-32-08:Server Close
+20-08-30:Server Open : Server Address is 192.168.10.16
+20-08-37:Server Close
+20-09-48:Server Open : Server Address is 192.168.10.16
+20-09-54:Server Open : Server Address is 192.168.10.16
+20-10-05:No. 0 client connected : address is 127.0.0.1:49516
+20-10-26:Received Message : [0]/NOTICE DISCONNECT
+20-17-08:Server Open : Server Address is 192.168.10.16
+20-17-15:No. 0 client connected : address is 127.0.0.1:49924
+20-17-28:Received Message : [0]/NOTICE DISCONNECT
+20-18-59:Server Open : Server Address is 192.168.10.16
+20-19-05:No. 0 client connected : address is 127.0.0.1:49948
+20-19-12:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy9090","PW":"asdfsadf","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+20-19-13:Send Message : /ERROR WRONGID
+20-20-38:Received Message : [0]/NOTICE DISCONNECT
+20-21-12:Server Open : Server Address is 192.168.10.16
+20-21-13:No. 0 client connected : address is 127.0.0.1:49957
+20-21-20:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0023","PW":"123131233","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+20-21-20:Send Message : /ERROR WRONGID
+20-21-24:Received Message : [0]/NOTICE DISCONNECT
+20-21-42:Server Open : Server Address is 192.168.10.16
+20-21-47:No. 0 client connected : address is 127.0.0.1:49964
+20-21-53:Received Message : [0]/LOGIN SIGNIN {"ID":"wqeqwedsfd","PW":"123123123","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+20-21-53:Send Message : /ERROR WRONGID
+20-22-00:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"123123123","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+20-22-00:Send Message : /ERROR WRONGID
+20-22-07:Received Message : [0]/LOGIN SIGNUP {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+20-22-07:New User Sign Up : reiy0902 IP ADDRESS : 127.0.0.1:49964
+20-22-07:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+20-22-18:Received Message : [0]/NOTICE DISCONNECT
