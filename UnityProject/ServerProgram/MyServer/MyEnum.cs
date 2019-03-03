@@ -21,6 +21,7 @@ namespace MyServer
         {
             DEFAULT = 0,
             MESSAGE,
+            SYNCUSER,
             DISCONNECT
         }
 
@@ -45,11 +46,21 @@ namespace MyServer
         {
             DEFAULT = 0,
             START,
+            CANCEL,
             READY,
             WAIT,
             HAND,
             STOP,
             BATTLE,
+            RESULT,
+            WIN,
+            LOSE,
+            DRAW
+        }
+
+        public enum MatchResultType
+        {
+            DEFAULT = 0,
             WIN,
             LOSE,
             DRAW

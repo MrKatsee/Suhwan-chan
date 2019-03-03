@@ -11,7 +11,7 @@ namespace MyServer
 {
     class NetworkConnection
     {
-        public static int MAXINDEX = 64;
+        public static int MAXINDEX = 256;
 
         private static Encoding encodingType = Encoding.UTF8;
 

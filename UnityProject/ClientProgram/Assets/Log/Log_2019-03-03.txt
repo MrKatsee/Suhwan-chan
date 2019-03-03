@@ -1,0 +1,58 @@
+18-33-56:Received Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":2,"Rate":0.0,"IsAvaliable":true}
+18-34-00:Received Message : /MATCH START {"ID":"reiy0902","PW":"","Win":2,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-34-03:Received Message : /MATCH WAIT 8
+18-34-06:Received Message : /MATCH HAND 0
+18-34-12:Received Message : /MATCH HAND 0
+18-34-12:Received Message : /MATCH DRAW
+18-34-15:Received Message : /MATCH WAIT 8
+18-34-15:Received Message : /MATCH WAIT 8
+18-34-17:Received Message : /MATCH HAND 1
+18-34-23:Received Message : /MATCH HAND 1
+18-34-23:Received Message : /MATCH LOSE
+18-34-26:Received Message : /NOTICE SYNCUSER {"ID":"nagunt","PW":"","Win":0,"Lose":3,"Rate":0.0,"IsAvaliable":false}
+18-34-51:Received Message : /ERROR SHUTDOWN
+18-42-30:Received Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":3,"Rate":0.0,"IsAvaliable":true}
+18-49-59:Received Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":3,"Rate":0.0,"IsAvaliable":true}
+18-50-41:Received Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":3,"Rate":0.0,"IsAvaliable":true}
+18-51-31:Received Message : /ERROR SHUTDOWN
+18-58-21:Received Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":3,"Rate":0.0,"IsAvaliable":true}
+18-58-33:Received Message : /MATCH START {"ID":"reiy0902","PW":"","Win":3,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-58-36:Received Message : /MATCH WAIT 8
+18-58-38:Received Message : /MATCH HAND 1
+18-58-44:Received Message : /MATCH HAND 1
+18-58-44:Received Message : /MATCH DRAW
+18-58-47:Received Message : /MATCH WAIT 8
+18-58-47:Received Message : /MATCH WAIT 8
+18-58-55:Received Message : /MATCH HAND 2
+18-58-56:Received Message : /MATCH HAND 2
+18-58-56:Received Message : /MATCH WIN
+18-58-59:Received Message : /NOTICE SYNCUSER {"ID":"nagunt","PW":"","Win":1,"Lose":3,"Rate":25.0,"IsAvaliable":false}
+18-59-04:Received Message : /MATCH STOP
+18-59-04:Received Message : /MATCH STOP
+18-59-07:Received Message : /ERROR SHUTDOWN
+19-05-49:Received Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":3,"Lose":1,"Rate":75.0,"IsAvaliable":true}
+19-06-03:Received Message : /MATCH START {"ID":"nghks","PW":"","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+19-06-08:Received Message : /MATCH WAIT 8
+19-06-11:Received Message : /MATCH HAND 1
+19-06-17:Received Message : /MATCH HAND 1
+19-06-17:Received Message : /MATCH DRAW
+19-06-20:Received Message : /MATCH WAIT 8
+19-06-20:Received Message : /MATCH WAIT 8
+19-06-28:Received Message : /MATCH HAND 2
+19-06-28:Received Message : /MATCH HAND 2
+19-06-28:Received Message : /MATCH DRAW
+19-06-31:Received Message : /MATCH WAIT 8
+19-06-31:Received Message : /MATCH WAIT 8
+19-06-39:Received Message : /MATCH HAND 2
+19-06-39:Received Message : /MATCH HAND 2
+19-06-39:Received Message : /MATCH WIN
+19-06-43:Received Message : /NOTICE SYNCUSER {"ID":"reiy0902","PW":"","Win":4,"Lose":1,"Rate":80.0,"IsAvaliable":false}
+19-07-03:Received Message : /ERROR SHUTDOWN
+19-07-03:Received Message : /MATCH STOP
+19-08-26:Received Message : /LOGIN SIGNIN {"ID":"nghks","PW":"12345","Win":0,"Lose":1,"Rate":0.0,"IsAvaliable":true}
+19-08-28:Received Message : /MATCH START {"ID":"reiy0902","PW":"","Win":4,"Lose":1,"Rate":80.0,"IsAvaliable":false}
+19-08-34:Received Message : /MATCH WAIT 8
+19-08-49:Received Message : /LOGIN SIGNIN {"ID":"nghks","PW":"12345","Win":0,"Lose":1,"Rate":0.0,"IsAvaliable":true}
+19-08-53:Received Message : /MATCH START {"ID":"reiy0902","PW":"","Win":4,"Lose":1,"Rate":80.0,"IsAvaliable":false}
+19-09-06:Received Message : /MATCH STOP
+19-09-06:Received Message : /MATCH STOP

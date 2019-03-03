@@ -18,6 +18,7 @@ public class MyEnum
     {
         DEFAULT = 0,
         MESSAGE,
+        SYNCUSER,
         DISCONNECT
     }
 
@@ -42,6 +43,7 @@ public class MyEnum
     {
         DEFAULT = 0,
         START,
+        CANCEL,
         READY,
         WAIT,
         HAND,

@@ -1,0 +1,641 @@
+17-19-22:Server Open : Server Address is 192.168.1.102
+17-19-25:Send Message : /ERROR SHUTDOWN
+17-19-25:Server Close
+17-52-04:Server Open : Server Address is 192.168.1.102
+17-52-19:No. 0 client connected : address is 127.0.0.1:51376
+17-52-30:Received Message : [0]/NOTICE DISCONNECT
+17-52-30:No. 0 client disconnected : address is 127.0.0.1:51376
+17-52-30:No. 0 client disconnected : address is 127.0.0.1:51376
+17-53-46:No. 0 client connected : address is 127.0.0.1:51453
+17-53-51:No. 1 client connected : address is 127.0.0.1:51462
+17-53-59:Received Message : [0]/LOGIN SIGNUP {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+17-53-59:Send Message : /ERROR EXIST
+17-54-05:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+17-54-05:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:51453
+17-54-05:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+17-54-13:Received Message : [1]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+17-54-13:Warning! Already Accessed Account : reiy0902IP ADDRESS : 127.0.0.1:51462
+17-54-13:Send Message : /ERROR ACCESS
+17-54-18:Received Message : [1]/LOGIN SIGNUP {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+17-54-18:Send Message : /ERROR EXIST
+17-54-22:Received Message : [1]/LOGIN SIGNUP {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+17-54-22:New User Sign Up : nagunt IP ADDRESS : 127.0.0.1:51462
+17-54-22:Send Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+17-54-24:Received Message : [1]/MATCH START
+17-54-24:Insert To Queue : nagunt/127.0.0.1:51462
+17-54-26:Received Message : [0]/MATCH START
+17-54-27:Insert To Queue : reiy0902/127.0.0.1:51453
+17-54-27:Send Message : /MATCH START {"ID":"nagunt","PW":"","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+17-54-27:Send Message : /MATCH START {"ID":"reiy0902","PW":"","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+17-54-27:Start Match : nagunt/127.0.0.1:51453 reiy0902/127.0.0.1:51453
+17-54-49:Send Message : /ERROR SHUTDOWN
+17-54-49:Send Message : /MATCH STOP
+17-54-49:No. 0 client disconnected : address is 127.0.0.1:51453
+17-54-49:Server Close
+17-54-49:Error for No. 0 client : 전송 연결 WSACancelBlockingCall를 호출하여 차단 작업이 중단되었습니다에서 데이터를 읽을 수 없습니다.
+17-56-19:Server Open : Server Address is 192.168.1.102
+17-56-41:No. 0 client connected : address is 127.0.0.1:51616
+17-56-50:No. 1 client connected : address is 127.0.0.1:51630
+17-56-59:Received Message : [0]/LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+17-56-59:New User Sign In : nagunt IP ADDRESS : 127.0.0.1:51616
+17-56-59:Send Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+17-57-06:Received Message : [1]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+17-57-06:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:51630
+17-57-07:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+17-57-18:Received Message : [0]/MATCH START
+17-57-18:Insert To Queue : nagunt/127.0.0.1:51616
+17-57-20:Received Message : [1]/MATCH START
+17-57-20:Insert To Queue : reiy0902/127.0.0.1:51630
+17-57-20:Send Message : /MATCH START {"ID":"nagunt","PW":"","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+17-57-20:Send Message : /MATCH START {"ID":"reiy0902","PW":"","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+17-57-20:Start Match : nagunt/127.0.0.1:51630 reiy0902/127.0.0.1:51630
+17-57-53:Send Message : /ERROR SHUTDOWN
+17-57-53:Send Message : /MATCH STOP
+17-57-53:No. 0 client disconnected : address is 127.0.0.1:51616
+17-57-53:Server Close
+17-57-53:Error for No. 0 client : 전송 연결 WSACancelBlockingCall를 호출하여 차단 작업이 중단되었습니다에서 데이터를 읽을 수 없습니다.
+18-02-14:Server Open : Server Address is 192.168.1.102
+18-02-14:No. 0 client connected : address is 127.0.0.1:51929
+18-02-27:No. 1 client connected : address is 127.0.0.1:51953
+18-02-42:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-02-43:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:51929
+18-02-43:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-02-53:Received Message : [1]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-02-53:Warning! Already Accessed Account : reiy0902IP ADDRESS : 127.0.0.1:51953
+18-02-53:Send Message : /ERROR ACCESS
+18-02-58:Received Message : [1]/LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-02-58:New User Sign In : nagunt IP ADDRESS : 127.0.0.1:51953
+18-02-58:Send Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-03-00:Received Message : [0]/MATCH START
+18-03-00:Insert To Queue : reiy0902/127.0.0.1:51929
+18-03-01:Received Message : [1]/MATCH START
+18-03-01:Insert To Queue : nagunt/127.0.0.1:51953
+18-03-01:Send Message : /MATCH START {"ID":"reiy0902","PW":"","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-03-01:Send Message : /MATCH START {"ID":"nagunt","PW":"","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-03-01:Start Match : reiy0902/127.0.0.1:51953 nagunt/127.0.0.1:51953
+18-03-05:Received Message : [0]/MATCH READY
+18-03-09:Received Message : [1]/MATCH READY
+18-03-09:Send Message : /MATCH WAIT 5
+18-03-40:Received Message : [1]/NOTICE DISCONNECT
+18-03-40:Send Message : /MATCH STOP
+18-03-40:No. 1 client disconnected : address is 127.0.0.1:51953
+18-03-40:Send Message : /MATCH STOP
+18-03-40:No. 1 client disconnected : address is 127.0.0.1:51953
+18-03-42:Received Message : [0]/NOTICE DISCONNECT
+18-03-42:Send Message : /MATCH STOP
+18-03-42:No. 0 client disconnected : address is 127.0.0.1:51929
+18-03-42:Send Message : /MATCH STOP
+18-03-42:No. 0 client disconnected : address is 127.0.0.1:51929
+18-03-49:Send Message : /ERROR SHUTDOWN
+18-03-49:Server Close
+18-10-14:Server Open : Server Address is 192.168.1.102
+18-10-36:No. 0 client connected : address is 127.0.0.1:52370
+18-10-45:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-10-45:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:52370
+18-10-45:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-10-48:No. 1 client connected : address is 127.0.0.1:52387
+18-10-59:Received Message : [1]/LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-10-59:New User Sign In : nagunt IP ADDRESS : 127.0.0.1:52387
+18-10-59:Send Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-11-02:Received Message : [0]/MATCH START
+18-11-02:Insert To Queue : reiy0902/127.0.0.1:52370
+18-11-07:Received Message : [1]/MATCH START
+18-11-07:Insert To Queue : nagunt/127.0.0.1:52387
+18-11-07:Send Message : /MATCH START {"ID":"reiy0902","PW":"","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-11-07:Send Message : /MATCH START {"ID":"nagunt","PW":"","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-11-07:Start Match : reiy0902/127.0.0.1:52387 nagunt/127.0.0.1:52387
+18-11-10:Received Message : [1]/MATCH READY
+18-11-10:Received Message : [0]/MATCH READY
+18-11-10:Send Message : /MATCH WAIT 5
+18-11-13:Received Message : [1]/MATCH HAND 1
+18-11-13:Send Message : /MATCH HAND 1
+18-11-13:Received Message : [0]/MATCH HAND 2
+18-11-13:Send Message : /MATCH HAND 2
+18-11-15:Received Message : [1]/MATCH BATTLE
+18-11-15:Received Message : [0]/MATCH BATTLE
+18-11-16:Send Message : /MATCH HAND 1
+18-11-16:Send Message : /MATCH HAND 2
+18-11-16:Send Message : /MATCH WIN
+18-11-16:Send Message : /MATCH LOSE
+18-11-19:Received Message : [0]/NOTICE SYNCUSER
+18-11-19:Send Message : /NOTICE SYNCUSER {"ID":"reiy0902","PW":"","Win":1,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-11-19:Received Message : [1]/NOTICE SYNCUSER
+18-11-19:Send Message : /NOTICE SYNCUSER {"ID":"nagunt","PW":"","Win":0,"Lose":1,"Rate":0.0,"IsAvaliable":false}
+18-11-59:Received Message : [1]/NOTICE DISCONNECT
+18-11-59:Send Message : /MATCH STOP
+18-11-59:No. 1 client disconnected : address is 127.0.0.1:52387
+18-11-59:Send Message : /MATCH STOP
+18-11-59:No. 1 client disconnected : address is 127.0.0.1:52387
+18-12-23:Send Message : /ERROR SHUTDOWN
+18-12-23:Send Message : /MATCH STOP
+18-12-23:Error for No. 0 client : 전송 연결 WSACancelBlockingCall를 호출하여 차단 작업이 중단되었습니다에서 데이터를 읽을 수 없습니다.
+18-12-23:No. 0 client disconnected : address is 127.0.0.1:52370
+18-12-23:Server Close
+18-12-23:Send Message : /MATCH STOP
+18-13-24:Server Open : Server Address is 192.168.1.102
+18-13-49:No. 0 client connected : address is 127.0.0.1:52541
+18-13-57:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-13-57:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:52541
+18-13-57:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":1,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-14-00:No. 1 client connected : address is 127.0.0.1:52559
+18-14-08:Received Message : [1]/LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-14-08:New User Sign In : nagunt IP ADDRESS : 127.0.0.1:52559
+18-14-08:Send Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":1,"Rate":0.0,"IsAvaliable":true}
+18-14-10:Received Message : [0]/MATCH START
+18-14-10:Insert To Queue : reiy0902/127.0.0.1:52541
+18-14-12:Received Message : [1]/MATCH START
+18-14-12:Insert To Queue : nagunt/127.0.0.1:52559
+18-14-12:Send Message : /MATCH START {"ID":"reiy0902","PW":"","Win":1,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-14-12:Send Message : /MATCH START {"ID":"nagunt","PW":"","Win":0,"Lose":1,"Rate":0.0,"IsAvaliable":false}
+18-14-12:Start Match : reiy0902/127.0.0.1:52559 nagunt/127.0.0.1:52559
+18-14-15:Received Message : [0]/MATCH READY
+18-14-15:Received Message : [1]/MATCH READY
+18-14-15:Send Message : /MATCH WAIT 5
+18-14-16:Received Message : [0]/MATCH HAND 1
+18-14-16:Send Message : /MATCH HAND 1
+18-14-17:Received Message : [1]/MATCH HAND 1
+18-14-17:Send Message : /MATCH HAND 1
+18-14-20:Received Message : [0]/MATCH BATTLE
+18-14-20:Received Message : [1]/MATCH BATTLE
+18-14-20:Send Message : /MATCH HAND 1
+18-14-20:Send Message : /MATCH HAND 1
+18-14-20:Send Message : /MATCH DRAW
+18-14-23:Received Message : [0]/MATCH READY
+18-14-23:Send Message : /MATCH WAIT 5
+18-14-23:Received Message : [1]/MATCH READY
+18-14-23:Send Message : /MATCH WAIT 5
+18-14-35:Send Message : /ERROR SHUTDOWN
+18-14-35:Send Message : /MATCH STOP
+18-14-35:Error for No. 0 client : 전송 연결 WSACancelBlockingCall를 호출하여 차단 작업이 중단되었습니다에서 데이터를 읽을 수 없습니다.
+18-14-35:No. 0 client disconnected : address is 127.0.0.1:52541
+18-14-35:No. 0 client connected : address is 127.0.0.1:52578
+18-14-35:Send Message : /MATCH STOP
+18-14-35:Error for No. 1 client : 전송 연결 WSACancelBlockingCall를 호출하여 차단 작업이 중단되었습니다에서 데이터를 읽을 수 없습니다.
+18-14-35:Send Message : /MATCH STOP
+18-14-35:No. 1 client disconnected : address is 127.0.0.1:52559
+18-14-36:No. 0 client disconnected : address is 127.0.0.1:52541
+18-14-36:Server Close
+18-14-36:Send Message : /MATCH STOP
+18-16-12:Server Open : Server Address is 192.168.1.102
+18-16-21:No. 0 client connected : address is 127.0.0.1:52673
+18-16-28:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-16-29:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:52673
+18-16-29:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":1,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-16-34:No. 1 client connected : address is 127.0.0.1:52691
+18-16-40:Received Message : [1]/LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-16-40:New User Sign In : nagunt IP ADDRESS : 127.0.0.1:52691
+18-16-40:Send Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":1,"Rate":0.0,"IsAvaliable":true}
+18-16-41:Received Message : [1]/MATCH START
+18-16-41:Insert To Queue : nagunt/127.0.0.1:52691
+18-16-42:Received Message : [0]/MATCH START
+18-16-42:Insert To Queue : reiy0902/127.0.0.1:52673
+18-16-42:Send Message : /MATCH START {"ID":"nagunt","PW":"","Win":0,"Lose":1,"Rate":0.0,"IsAvaliable":false}
+18-16-42:Send Message : /MATCH START {"ID":"reiy0902","PW":"","Win":1,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-16-42:Start Match : nagunt/127.0.0.1:52673 reiy0902/127.0.0.1:52673
+18-16-45:Received Message : [0]/MATCH READY
+18-16-45:Received Message : [1]/MATCH READY
+18-16-45:Send Message : /MATCH WAIT 5
+18-16-47:Received Message : [0]/MATCH HAND 1
+18-16-47:Send Message : /MATCH HAND 1
+18-16-47:Received Message : [1]/MATCH HAND 1
+18-16-47:Send Message : /MATCH HAND 1
+18-16-50:Received Message : [0]/MATCH BATTLE
+18-16-50:Received Message : [1]/MATCH BATTLE
+18-16-50:Send Message : /MATCH HAND 1
+18-16-50:Send Message : /MATCH HAND 1
+18-16-50:Send Message : /MATCH DRAW
+18-16-53:Received Message : [0]/MATCH READY
+18-16-53:Send Message : /MATCH WAIT 5
+18-16-53:Received Message : [1]/MATCH READY
+18-16-53:Send Message : /MATCH WAIT 5
+18-16-55:Received Message : [1]/MATCH HAND 2
+18-16-55:Send Message : /MATCH HAND 2
+18-16-56:Received Message : [0]/MATCH HAND 0
+18-16-56:Send Message : /MATCH HAND 0
+18-16-58:Received Message : [1]/MATCH BATTLE
+18-16-59:Received Message : [0]/MATCH BATTLE
+18-16-59:Send Message : /MATCH HAND 0
+18-16-59:Send Message : /MATCH HAND 2
+18-16-59:Send Message : /MATCH LOSE
+18-16-59:Send Message : /MATCH WIN
+18-17-02:Received Message : [1]/NOTICE SYNCUSER
+18-17-02:Send Message : /NOTICE SYNCUSER {"ID":"nagunt","PW":"","Win":0,"Lose":2,"Rate":0.0,"IsAvaliable":false}
+18-17-02:No. 2 client connected : address is 127.0.0.1:52707
+18-17-02:Received Message : [0]/NOTICE SYNCUSER
+18-17-02:No. 3 client connected : address is 127.0.0.1:52708
+18-17-02:Send Message : /NOTICE SYNCUSER {"ID":"reiy0902","PW":"","Win":2,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-17-12:Received Message : [3]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-17-12:Warning! Already Accessed Account : reiy0902IP ADDRESS : 127.0.0.1:52708
+18-17-12:Send Message : /ERROR ACCESS
+18-17-25:Send Message : /ERROR SHUTDOWN
+18-17-25:Send Message : /MATCH STOP
+18-17-25:Error for No. 0 client : 전송 연결 WSACancelBlockingCall를 호출하여 차단 작업이 중단되었습니다에서 데이터를 읽을 수 없습니다.
+18-17-25:No. 0 client disconnected : address is 127.0.0.1:52673
+18-17-25:No. 4 client connected : address is 127.0.0.1:52721
+18-17-25:Send Message : /MATCH STOP
+18-17-25:Send Message : /MATCH STOP
+18-17-25:Error for No. 1 client : 전송 연결 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다에서 데이터를 읽을 수 없습니다.
+18-17-25:No. 1 client disconnected : address is 127.0.0.1:52691
+18-17-25:No. 0 client disconnected : address is 127.0.0.1:52673
+18-17-26:No. 2 client disconnected : address is 127.0.0.1:52707
+18-17-26:Send Message : /MATCH STOP
+18-17-26:Error for No. 2 client : 전송 연결 WSACancelBlockingCall를 호출하여 차단 작업이 중단되었습니다에서 데이터를 읽을 수 없습니다.
+18-17-26:Server Close
+18-17-26:No. 1 client disconnected : address is 127.0.0.1:52691
+18-23-24:Server Open : Server Address is 192.168.1.102
+18-23-25:No. 0 client connected : address is 127.0.0.1:53053
+18-23-39:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-23-39:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:53053
+18-23-39:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":2,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-23-40:Received Message : [0]/MATCH START
+18-23-40:Insert To Queue : reiy0902/127.0.0.1:53053
+18-23-41:Received Message : [0]/MATCH CANCEL
+18-23-44:Received Message : [0]/MATCH START
+18-23-48:Received Message : [0]/MATCH CANCEL
+18-23-49:Received Message : [0]/MATCH START
+18-23-50:Received Message : [0]/MATCH CANCEL
+18-23-50:Received Message : [0]/MATCH START
+18-23-50:Received Message : [0]/MATCH CANCEL
+18-23-51:Received Message : [0]/MATCH START
+18-24-25:No. 1 client connected : address is 127.0.0.1:53130
+18-24-33:Received Message : [1]/LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-24-33:New User Sign In : nagunt IP ADDRESS : 127.0.0.1:53130
+18-24-33:Send Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":2,"Rate":0.0,"IsAvaliable":true}
+18-24-35:Received Message : [1]/MATCH START
+18-24-35:Insert To Queue : nagunt/127.0.0.1:53130
+18-24-35:Send Message : /MATCH START {"ID":"reiy0902","PW":"","Win":2,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-24-35:Send Message : /MATCH START {"ID":"nagunt","PW":"","Win":0,"Lose":2,"Rate":0.0,"IsAvaliable":false}
+18-24-35:Start Match : reiy0902/127.0.0.1:53130 nagunt/127.0.0.1:53130
+18-24-38:Received Message : [0]/MATCH READY
+18-24-38:Received Message : [1]/MATCH READY
+18-24-38:Send Message : /MATCH WAIT 8
+18-24-40:Received Message : [0]/MATCH HAND 0
+18-24-40:Send Message : /MATCH HAND 0
+18-24-46:Received Message : [1]/MATCH HAND 0
+18-24-46:Send Message : /MATCH HAND 0
+18-24-46:Received Message : [1]/MATCH BATTLE
+18-24-46:Received Message : [0]/MATCH BATTLE
+18-24-46:Send Message : /MATCH HAND 0
+18-24-46:Send Message : /MATCH HAND 0
+18-24-46:Send Message : /MATCH DRAW
+18-24-49:Received Message : [0]/MATCH READY
+18-24-49:Send Message : /MATCH WAIT 8
+18-24-49:Received Message : [1]/MATCH READY
+18-24-49:Send Message : /MATCH WAIT 8
+18-24-51:Received Message : [1]/MATCH HAND 0
+18-24-51:Send Message : /MATCH HAND 0
+18-24-53:Received Message : [1]/MATCH HAND 0
+18-24-53:Send Message : /MATCH HAND 0
+18-24-53:Received Message : [1]/MATCH HAND 1
+18-24-53:Send Message : /MATCH HAND 1
+18-24-57:Received Message : [1]/MATCH BATTLE
+18-24-57:Received Message : [0]/MATCH BATTLE
+18-24-57:Send Message : /MATCH HAND 1
+18-24-57:Send Message : /MATCH HAND -1
+18-25-30:Send Message : /ERROR SHUTDOWN
+18-25-30:Send Message : /MATCH STOP
+18-25-30:No. 0 client disconnected : address is 127.0.0.1:53053
+18-25-30:Server Close
+18-25-30:Error for No. 0 client : 전송 연결 WSACancelBlockingCall를 호출하여 차단 작업이 중단되었습니다에서 데이터를 읽을 수 없습니다.
+18-33-29:Server Open : Server Address is 192.168.1.102
+18-33-29:No. 0 client connected : address is 127.0.0.1:53578
+18-33-37:No. 1 client connected : address is 127.0.0.1:53591
+18-33-44:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-33-44:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:53578
+18-33-44:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":2,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-33-56:Received Message : [1]/LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-33-56:New User Sign In : nagunt IP ADDRESS : 127.0.0.1:53591
+18-33-56:Send Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":2,"Rate":0.0,"IsAvaliable":true}
+18-33-58:Received Message : [0]/MATCH START
+18-33-58:Insert To Queue : reiy0902/127.0.0.1:53578
+18-34-00:Received Message : [1]/MATCH START
+18-34-00:Insert To Queue : nagunt/127.0.0.1:53591
+18-34-00:Send Message : /MATCH START {"ID":"reiy0902","PW":"","Win":2,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-34-00:Send Message : /MATCH START {"ID":"nagunt","PW":"","Win":0,"Lose":2,"Rate":0.0,"IsAvaliable":false}
+18-34-00:Start Match : reiy0902/127.0.0.1:53591 nagunt/127.0.0.1:53591
+18-34-03:Received Message : [0]/MATCH READY
+18-34-03:Received Message : [1]/MATCH READY
+18-34-03:Send Message : /MATCH WAIT 8
+18-34-06:Received Message : [0]/MATCH HAND 0
+18-34-06:Send Message : /MATCH HAND 0
+18-34-08:Received Message : [1]/MATCH HAND 0
+18-34-08:Send Message : /MATCH HAND 0
+18-34-11:Received Message : [0]/MATCH BATTLE
+18-34-12:Received Message : [1]/MATCH BATTLE
+18-34-12:Send Message : /MATCH HAND 0
+18-34-12:Send Message : /MATCH HAND 0
+18-34-12:Send Message : /MATCH DRAW
+18-34-15:Received Message : [1]/MATCH READY
+18-34-15:Send Message : /MATCH WAIT 8
+18-34-15:Received Message : [0]/MATCH READY
+18-34-15:Send Message : /MATCH WAIT 8
+18-34-17:Received Message : [0]/MATCH HAND 1
+18-34-17:Send Message : /MATCH HAND 1
+18-34-19:Received Message : [1]/MATCH HAND 0
+18-34-19:Send Message : /MATCH HAND 0
+18-34-23:Received Message : [1]/MATCH BATTLE
+18-34-23:Received Message : [0]/MATCH BATTLE
+18-34-23:Send Message : /MATCH HAND 0
+18-34-23:Send Message : /MATCH HAND 1
+18-34-23:Send Message : /MATCH WIN
+18-34-23:Send Message : /MATCH LOSE
+18-34-26:Received Message : [0]/NOTICE SYNCUSER
+18-34-26:Send Message : /NOTICE SYNCUSER {"ID":"reiy0902","PW":"","Win":3,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-34-26:Received Message : [1]/NOTICE SYNCUSER
+18-34-26:Send Message : /NOTICE SYNCUSER {"ID":"nagunt","PW":"","Win":0,"Lose":3,"Rate":0.0,"IsAvaliable":false}
+18-34-29:Received Message : [0]/MATCH START
+18-34-29:Insert To Queue : reiy0902/127.0.0.1:53578
+18-34-43:Received Message : [0]/MATCH CANCEL
+18-34-51:Send Message : /ERROR SHUTDOWN
+18-34-51:Send Message : /MATCH STOP
+18-34-51:Error for No. 0 client : 전송 연결 WSACancelBlockingCall를 호출하여 차단 작업이 중단되었습니다에서 데이터를 읽을 수 없습니다.
+18-34-51:No. 0 client disconnected : address is 127.0.0.1:53578
+18-34-51:Error for No. 1 client : 전송 연결 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다에서 데이터를 읽을 수 없습니다.
+18-34-51:Send Message : /MATCH STOP
+18-34-51:No. 0 client connected : address is 127.0.0.1:53635
+18-34-51:Send Message : /MATCH STOP
+18-34-51:No. 1 client disconnected : address is 127.0.0.1:53591
+18-34-51:No. 0 client disconnected : address is 127.0.0.1:53578
+18-34-51:Server Close
+18-34-51:Send Message : /MATCH STOP
+18-41-12:Server Open : Server Address is 192.168.1.102
+18-41-21:No. 0 client connected : address is 127.0.0.1:53968
+18-41-27:Received Message : [0]/NOTICE DISCONNECT
+18-41-27:No. 0 client disconnected : address is 127.0.0.1:53968
+18-41-27:No. 0 client disconnected : address is 127.0.0.1:53968
+18-42-09:No. 0 client connected : address is 127.0.0.1:54012
+18-42-17:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-42-17:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:54012
+18-42-18:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":3,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-42-21:No. 1 client connected : address is 127.0.0.1:54026
+18-42-30:Received Message : [1]/LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-42-30:New User Sign In : nagunt IP ADDRESS : 127.0.0.1:54026
+18-42-30:Send Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":3,"Rate":0.0,"IsAvaliable":true}
+18-42-31:Received Message : [1]/MATCH START
+18-42-31:Insert To List[0] : nagunt/127.0.0.1:54026
+18-42-33:Received Message : [1]/MATCH CANCEL
+18-42-37:Received Message : [1]/MATCH START
+18-42-37:Insert To List[0] : nagunt/127.0.0.1:54026
+18-42-39:Received Message : [1]/MATCH CANCEL
+18-42-45:Received Message : [0]/MATCH START
+18-42-45:Insert To List[0] : reiy0902/127.0.0.1:54012
+18-42-48:Received Message : [1]/MATCH START
+18-42-48:Insert To List[1] : nagunt/127.0.0.1:54026
+18-49-08:Server Open : Server Address is 192.168.1.102
+18-49-26:No. 0 client connected : address is 127.0.0.1:54377
+18-49-33:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-49-33:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:54377
+18-49-33:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":3,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-49-35:Received Message : [0]/MATCH START
+18-49-35:Insert To List[0] : reiy0902/127.0.0.1:54377
+18-49-38:Received Message : [0]/MATCH CANCEL
+18-49-38:Cancel Match : reiy0902/127.0.0.1:54377
+18-49-41:Received Message : [0]/MATCH START
+18-49-41:Insert To List[0] : reiy0902/127.0.0.1:54377
+18-49-43:Received Message : [0]/MATCH CANCEL
+18-49-43:Cancel Match : reiy0902/127.0.0.1:54377
+18-49-48:No. 1 client connected : address is 127.0.0.1:54402
+18-49-59:Received Message : [1]/LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-49-59:New User Sign In : nagunt IP ADDRESS : 127.0.0.1:54402
+18-49-59:Send Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":3,"Rate":0.0,"IsAvaliable":true}
+18-50-00:Received Message : [1]/MATCH START
+18-50-00:Insert To List[0] : nagunt/127.0.0.1:54402
+18-50-01:Received Message : [1]/NOTICE DISCONNECT
+18-50-01:Cancel Match : nagunt/127.0.0.1:54402
+18-50-01:No. 1 client disconnected : address is 127.0.0.1:54402
+18-50-01:No. 1 client disconnected : address is 127.0.0.1:54402
+18-50-07:Received Message : [0]/MATCH START
+18-50-07:Insert To List[0] : reiy0902/127.0.0.1:54377
+18-50-09:Received Message : [0]/MATCH CANCEL
+18-50-09:Cancel Match : reiy0902/127.0.0.1:54377
+18-50-12:No. 1 client connected : address is 127.0.0.1:54423
+18-50-41:Received Message : [1]/LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-50-41:New User Sign In : nagunt IP ADDRESS : 127.0.0.1:54423
+18-50-41:Send Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":3,"Rate":0.0,"IsAvaliable":true}
+18-50-45:Received Message : [0]/MATCH START
+18-50-45:Insert To List[0] : reiy0902/127.0.0.1:54377
+18-50-46:Received Message : [1]/MATCH START
+18-50-46:Insert To List[1] : nagunt/127.0.0.1:54423
+18-51-02:Received Message : [0]/MATCH CANCEL
+18-51-05:Received Message : [1]/MATCH CANCEL
+18-51-05:Cancel Match : nagunt/127.0.0.1:54423
+18-51-13:Received Message : [0]/MATCH START
+18-51-13:Insert To List[0] : reiy0902/127.0.0.1:54377
+18-51-14:Received Message : [0]/MATCH CANCEL
+18-51-14:Cancel Match : reiy0902/127.0.0.1:54377
+18-51-31:Send Message : /ERROR SHUTDOWN
+18-51-31:No. 0 client disconnected : address is 127.0.0.1:54377
+18-51-31:Error for No. 0 client : 전송 연결 WSACancelBlockingCall를 호출하여 차단 작업이 중단되었습니다에서 데이터를 읽을 수 없습니다.
+18-51-31:Server Close
+18-51-31:No. 0 client disconnected : address is 127.0.0.1:54377
+18-57-29:Server Open : Server Address is 192.168.1.102
+18-57-45:No. 0 client connected : address is 127.0.0.1:54800
+18-57-47:Received Message : [0]/NOTICE DISCONNECT
+18-57-47:No. 0 client disconnected : address is 127.0.0.1:54800
+18-57-47:No. 0 client disconnected : address is 127.0.0.1:54800
+18-58-01:No. 0 client connected : address is 127.0.0.1:54824
+18-58-11:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-58-11:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:54824
+18-58-11:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":3,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-58-15:No. 1 client connected : address is 127.0.0.1:54841
+18-58-21:Received Message : [1]/LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+18-58-21:New User Sign In : nagunt IP ADDRESS : 127.0.0.1:54841
+18-58-21:Send Message : /LOGIN SIGNIN {"ID":"nagunt","PW":"ksh159263","Win":0,"Lose":3,"Rate":0.0,"IsAvaliable":true}
+18-58-22:Received Message : [0]/MATCH START
+18-58-23:Received Message : [0]/MATCH CANCEL
+18-58-23:Cancel Match : reiy0902/127.0.0.1:54824
+18-58-25:Received Message : [0]/MATCH START
+18-58-26:Received Message : [0]/MATCH CANCEL
+18-58-26:Cancel Match : reiy0902/127.0.0.1:54824
+18-58-26:Received Message : [0]/MATCH START
+18-58-27:Received Message : [0]/MATCH CANCEL
+18-58-27:Cancel Match : reiy0902/127.0.0.1:54824
+18-58-28:Received Message : [0]/MATCH START
+18-58-29:Received Message : [0]/MATCH CANCEL
+18-58-29:Cancel Match : reiy0902/127.0.0.1:54824
+18-58-30:Received Message : [1]/MATCH START
+18-58-33:Received Message : [0]/MATCH START
+18-58-33:Send Message : /MATCH START {"ID":"nagunt","PW":"","Win":0,"Lose":3,"Rate":0.0,"IsAvaliable":false}
+18-58-33:Send Message : /MATCH START {"ID":"reiy0902","PW":"","Win":3,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+18-58-33:Start Match : nagunt/127.0.0.1:54824 reiy0902/127.0.0.1:54824
+18-58-36:Received Message : [0]/MATCH READY
+18-58-36:Received Message : [1]/MATCH READY
+18-58-36:Send Message : /MATCH WAIT 8
+18-58-38:Received Message : [0]/MATCH HAND 1
+18-58-38:Send Message : /MATCH HAND 1
+18-58-39:Received Message : [1]/MATCH HAND 0
+18-58-39:Send Message : /MATCH HAND 0
+18-58-40:Received Message : [1]/MATCH HAND 1
+18-58-40:Send Message : /MATCH HAND 1
+18-58-44:Received Message : [0]/MATCH BATTLE
+18-58-44:Received Message : [1]/MATCH BATTLE
+18-58-44:Send Message : /MATCH HAND 1
+18-58-44:Send Message : /MATCH HAND 1
+18-58-44:Send Message : /MATCH DRAW
+18-58-47:Received Message : [0]/MATCH READY
+18-58-47:Send Message : /MATCH WAIT 8
+18-58-47:Received Message : [1]/MATCH READY
+18-58-47:Send Message : /MATCH WAIT 8
+18-58-55:Received Message : [1]/MATCH HAND 0
+18-58-55:Send Message : /MATCH HAND 0
+18-58-55:Received Message : [1]/MATCH BATTLE
+18-58-55:Received Message : [0]/MATCH HAND 2
+18-58-55:Send Message : /MATCH HAND 2
+18-58-55:Received Message : [0]/MATCH BATTLE
+18-58-56:Send Message : /MATCH HAND 2
+18-58-56:Send Message : /MATCH HAND 0
+18-58-56:Send Message : /MATCH WIN
+18-58-56:Send Message : /MATCH LOSE
+18-58-59:Received Message : [1]/NOTICE SYNCUSER
+18-58-59:Send Message : /NOTICE SYNCUSER {"ID":"nagunt","PW":"","Win":1,"Lose":3,"Rate":25.0,"IsAvaliable":false}
+18-58-59:Received Message : [0]/NOTICE SYNCUSER
+18-58-59:Send Message : /NOTICE SYNCUSER {"ID":"reiy0902","PW":"","Win":3,"Lose":1,"Rate":75.0,"IsAvaliable":false}
+18-59-04:Received Message : [0]/NOTICE DISCONNECT
+18-59-04:Send Message : /MATCH STOP
+18-59-04:No. 0 client disconnected : address is 127.0.0.1:54824
+18-59-04:Send Message : /MATCH STOP
+18-59-04:No. 0 client disconnected : address is 127.0.0.1:54824
+18-59-07:Send Message : /ERROR SHUTDOWN
+18-59-07:Server Close
+19-05-27:Server Open : Server Address is 192.168.1.102
+19-05-27:No. 0 client connected : address is 127.0.0.1:55192
+19-05-42:No. 1 client connected : address is 127.0.0.1:55216
+19-05-49:Received Message : [1]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+19-05-49:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:55216
+19-05-49:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":3,"Lose":1,"Rate":75.0,"IsAvaliable":true}
+19-05-57:Received Message : [0]/LOGIN SIGNUP {"ID":"nghks","PW":"12345","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+19-05-57:New User Sign Up : nghks IP ADDRESS : 127.0.0.1:55192
+19-05-57:Send Message : /LOGIN SIGNIN {"ID":"nghks","PW":"12345","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+19-05-59:Received Message : [0]/MATCH START
+19-06-00:Received Message : [0]/MATCH CANCEL
+19-06-00:Cancel Match : nghks/127.0.0.1:55192
+19-06-01:Received Message : [0]/MATCH START
+19-06-03:Received Message : [1]/MATCH START
+19-06-03:Send Message : /MATCH START {"ID":"nghks","PW":"","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":false}
+19-06-03:Send Message : /MATCH START {"ID":"reiy0902","PW":"","Win":3,"Lose":1,"Rate":75.0,"IsAvaliable":false}
+19-06-03:Start Match : nghks/127.0.0.1:55216 reiy0902/127.0.0.1:55216
+19-06-08:Received Message : [1]/MATCH READY
+19-06-08:Received Message : [0]/MATCH READY
+19-06-08:Send Message : /MATCH WAIT 8
+19-06-11:Received Message : [0]/MATCH HAND 1
+19-06-11:Send Message : /MATCH HAND 1
+19-06-12:Received Message : [1]/MATCH HAND 1
+19-06-12:Send Message : /MATCH HAND 1
+19-06-16:Received Message : [0]/MATCH BATTLE
+19-06-17:Received Message : [1]/MATCH BATTLE
+19-06-17:Send Message : /MATCH HAND 1
+19-06-17:Send Message : /MATCH HAND 1
+19-06-17:Send Message : /MATCH DRAW
+19-06-20:Received Message : [0]/MATCH READY
+19-06-20:Send Message : /MATCH WAIT 8
+19-06-20:Received Message : [1]/MATCH READY
+19-06-20:Send Message : /MATCH WAIT 8
+19-06-28:Received Message : [0]/MATCH HAND 2
+19-06-28:Send Message : /MATCH HAND 2
+19-06-28:Received Message : [0]/MATCH BATTLE
+19-06-28:Received Message : [1]/MATCH HAND 2
+19-06-28:Send Message : /MATCH HAND 2
+19-06-28:Received Message : [1]/MATCH BATTLE
+19-06-28:Send Message : /MATCH HAND 2
+19-06-28:Send Message : /MATCH HAND 2
+19-06-28:Send Message : /MATCH DRAW
+19-06-31:Received Message : [0]/MATCH READY
+19-06-31:Send Message : /MATCH WAIT 8
+19-06-31:Received Message : [1]/MATCH READY
+19-06-31:Send Message : /MATCH WAIT 8
+19-06-39:Received Message : [0]/MATCH HAND 2
+19-06-39:Send Message : /MATCH HAND 2
+19-06-39:Received Message : [0]/MATCH BATTLE
+19-06-39:Received Message : [1]/MATCH HAND 0
+19-06-39:Send Message : /MATCH HAND 0
+19-06-39:Received Message : [1]/MATCH BATTLE
+19-06-39:Send Message : /MATCH HAND 0
+19-06-39:Send Message : /MATCH HAND 2
+19-06-39:Send Message : /MATCH LOSE
+19-06-39:Send Message : /MATCH WIN
+19-06-42:Received Message : [0]/NOTICE SYNCUSER
+19-06-42:Send Message : /NOTICE SYNCUSER {"ID":"nghks","PW":"","Win":0,"Lose":1,"Rate":0.0,"IsAvaliable":false}
+19-06-43:Received Message : [1]/NOTICE SYNCUSER
+19-06-43:Send Message : /NOTICE SYNCUSER {"ID":"reiy0902","PW":"","Win":4,"Lose":1,"Rate":80.0,"IsAvaliable":false}
+19-06-48:Received Message : [0]/MATCH START
+19-06-49:Received Message : [0]/MATCH CANCEL
+19-06-49:Cancel Match : nghks/127.0.0.1:55192
+19-06-56:Received Message : [0]/MATCH START
+19-07-00:Received Message : [0]/MATCH CANCEL
+19-07-00:Cancel Match : nghks/127.0.0.1:55192
+19-07-03:Send Message : /ERROR SHUTDOWN
+19-07-03:Send Message : /MATCH STOP
+19-07-03:No. 0 client disconnected : address is 127.0.0.1:55192
+19-07-03:Server Close
+19-07-03:Error for No. 0 client : 전송 연결 WSACancelBlockingCall를 호출하여 차단 작업이 중단되었습니다에서 데이터를 읽을 수 없습니다.
+19-07-53:Server Open : Server Address is 192.168.1.102
+19-08-11:No. 0 client connected : address is 127.0.0.1:55319
+19-08-18:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+19-08-18:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:55319
+19-08-18:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":4,"Lose":1,"Rate":80.0,"IsAvaliable":true}
+19-08-21:No. 1 client connected : address is 127.0.0.1:55334
+19-08-26:Received Message : [1]/LOGIN SIGNIN {"ID":"nghks","PW":"12345","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+19-08-26:New User Sign In : nghks IP ADDRESS : 127.0.0.1:55334
+19-08-26:Send Message : /LOGIN SIGNIN {"ID":"nghks","PW":"12345","Win":0,"Lose":1,"Rate":0.0,"IsAvaliable":true}
+19-08-27:Received Message : [0]/MATCH START
+19-08-28:Received Message : [1]/MATCH START
+19-08-28:Send Message : /MATCH START {"ID":"reiy0902","PW":"","Win":4,"Lose":1,"Rate":80.0,"IsAvaliable":false}
+19-08-28:Send Message : /MATCH START {"ID":"nghks","PW":"","Win":0,"Lose":1,"Rate":0.0,"IsAvaliable":false}
+19-08-28:Start Match : reiy0902/127.0.0.1:55334 nghks/127.0.0.1:55334
+19-08-34:Received Message : [0]/MATCH READY
+19-08-34:Received Message : [1]/MATCH READY
+19-08-34:Send Message : /MATCH WAIT 8
+19-08-35:Received Message : [1]/NOTICE DISCONNECT
+19-08-35:Send Message : /MATCH STOP
+19-08-35:No. 1 client disconnected : address is 127.0.0.1:55334
+19-08-35:Send Message : /MATCH STOP
+19-08-35:No. 1 client disconnected : address is 127.0.0.1:55334
+19-08-39:Received Message : [0]/MATCH START
+19-08-43:No. 1 client connected : address is 127.0.0.1:55355
+19-08-49:Received Message : [1]/LOGIN SIGNIN {"ID":"nghks","PW":"12345","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+19-08-49:New User Sign In : nghks IP ADDRESS : 127.0.0.1:55355
+19-08-49:Send Message : /LOGIN SIGNIN {"ID":"nghks","PW":"12345","Win":0,"Lose":1,"Rate":0.0,"IsAvaliable":true}
+19-08-53:Received Message : [1]/MATCH START
+19-08-53:Send Message : /MATCH START {"ID":"reiy0902","PW":"","Win":4,"Lose":1,"Rate":80.0,"IsAvaliable":false}
+19-08-53:Send Message : /MATCH START {"ID":"nghks","PW":"","Win":0,"Lose":1,"Rate":0.0,"IsAvaliable":false}
+19-08-53:Start Match : reiy0902/127.0.0.1:55355 nghks/127.0.0.1:55355
+19-08-58:Received Message : [1]/MATCH READY
+19-09-05:Received Message : [0]/NOTICE DISCONNECT
+19-09-05:Send Message : /MATCH STOP
+19-09-05:Send Message : /MATCH STOP
+19-09-05:No. 0 client disconnected : address is 127.0.0.1:55319
+19-09-05:Send Message : /MATCH STOP
+19-09-05:Send Message : /MATCH STOP
+19-09-05:No. 0 client disconnected : address is 127.0.0.1:55319
+19-09-08:Received Message : [1]/NOTICE DISCONNECT
+19-09-08:Send Message : /MATCH STOP
+19-09-08:No. 1 client disconnected : address is 127.0.0.1:55355
+19-09-08:Send Message : /MATCH STOP
+19-09-08:No. 1 client disconnected : address is 127.0.0.1:55355
+19-09-13:Send Message : /ERROR SHUTDOWN
+19-09-13:Server Close
+19-12-16:Server Open : Server Address is 192.168.1.102
+19-12-21:No. 0 client connected : address is 192.168.1.102:55557
+19-12-24:Received Message : [0]/NOTICE DISCONNECT
+19-12-24:No. 0 client disconnected : address is 192.168.1.102:55557
+19-12-24:No. 0 client disconnected : address is 192.168.1.102:55557
+19-12-27:Send Message : /ERROR SHUTDOWN
+19-12-27:Server Close
+19-13-24:Server Open : Server Address is 192.168.1.102
+19-13-24:No. 0 client connected : address is 192.168.1.102:55621
+19-13-30:Received Message : [0]/NOTICE DISCONNECT
+19-13-30:No. 0 client disconnected : address is 192.168.1.102:55621
+19-13-30:No. 0 client disconnected : address is 192.168.1.102:55621
+19-13-33:Send Message : /ERROR SHUTDOWN
+19-13-33:Server Close
+19-16-22:Server Open : Server Address is 192.168.1.102
+19-31-46:Send Message : /ERROR SHUTDOWN
+19-31-46:Server Close
+19-33-44:Server Open : Server Address is 192.168.1.102
+19-33-46:Send Message : /ERROR SHUTDOWN
+19-33-46:Server Close
+19-33-49:Server Open : Server Address is 192.168.1.102
+19-34-06:No. 0 client connected : address is 192.168.1.102:56148
+19-34-10:Received Message : [0]/NOTICE DISCONNECT
+19-34-10:No. 0 client disconnected : address is 192.168.1.102:56148
+19-34-10:No. 0 client disconnected : address is 192.168.1.102:56148

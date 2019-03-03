@@ -84,6 +84,7 @@ namespace MyServer
         public static void Close()
         {
             //Send(MessageType.NOTICE, CastingType.BROADCAST, "서버와의 연결이 종료되었습니다.");
+            ServerManager.Send("/" + MessageType.ERROR.ToString() + " " + ErrorType.SHUTDOWN.ToString(), CastType.BROADCAST);
             isAwake = false;
             Server.ShutDown();
             LogManager.WriteLog("Server Close");
@@ -180,6 +181,11 @@ namespace MyServer
                                     switch (Parse<NoticeType>(noticeType))
                                     {
                                         case NoticeType.DEFAULT: break;
+                                        case NoticeType.SYNCUSER:
+                                            {
+                                                Send("/" + MessageType.NOTICE.ToString() + " " + NoticeType.SYNCUSER.ToString() + " " + NetworkConnection.GetConnection(senderIndex).user.ToSecuredData(), CastType.UNICAST, senderIndex);
+                                                break;
+                                            }
                                         case NoticeType.DISCONNECT:
                                             {
                                                 NetworkConnection.GetConnection(senderIndex).ShutDown();

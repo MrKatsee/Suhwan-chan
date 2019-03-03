@@ -55,6 +55,13 @@ namespace MyServer
             return File.Exists(string.Format("{0}/{1}.dat", DIRECTORY, id));
         }
 
+        public string ToSecuredData()
+        {
+            MyUser securedUser = ParseData(ToData());
+            securedUser.PW = "";
+            return securedUser.ToData();
+        }
+
         // 서버에서만 사용하는 부분
 
         public string ID { get; set; }

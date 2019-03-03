@@ -36,13 +36,10 @@ public class LogManager : MonoBehaviour {
                     path = string.Format("file:///{0}/Log", Application.streamingAssetsPath);
                     break;
                 case RuntimePlatform.WindowsEditor:
-                    path = string.Format("{0}/Log", Application.dataPath);
-                    break;
-                case RuntimePlatform.Android:
                 case RuntimePlatform.WindowsPlayer:
                     {
-                        Directory.CreateDirectory(string.Format("{0}/Log", Application.persistentDataPath));
-                        path = string.Format("{0}/Log", Application.persistentDataPath);
+                        Directory.CreateDirectory(string.Format("{0}/Log", Application.dataPath));
+                        path = string.Format("{0}/Log", Application.dataPath);
                         break;
                     }
                 default:

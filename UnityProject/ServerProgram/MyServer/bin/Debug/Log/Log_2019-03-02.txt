@@ -1,0 +1,60 @@
+13-32-34:Server Open : Server Address is 192.168.10.2
+13-32-42:Server Close
+13-35-55:Server Open : Server Address is 192.168.10.2
+13-36-02:No. 0 client connected : address is 127.0.0.1:1560
+13-36-07:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"123124134","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+13-36-07:Wrong User Tried To Sign In : reiy0902 IP ADDRESS : 127.0.0.1:1560
+13-36-07:Send Message : /ERROR WRONGPW
+13-36-10:Received Message : [0]/LOGIN SIGNUP {"ID":"reiy0902","PW":"123124134","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+13-36-10:Send Message : /ERROR EXIST
+13-36-18:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy09022222","PW":"123124134","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+13-36-18:Send Message : /ERROR WRONGID
+13-36-27:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+13-36-27:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:1560
+13-36-27:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+13-36-32:No. 0 client disconnected : address is 127.0.0.1:1560
+13-36-32:Server Close
+15-59-56:Server Open : Server Address is 192.168.10.2
+15-59-59:No. 0 client connected : address is 127.0.0.1:2902
+16-00-01:Received Message : [0]/NOTICE DISCONNECT
+16-00-01:No. 0 client disconnected : address is 127.0.0.1:2902
+16-00-01:No. 0 client disconnected : address is 127.0.0.1:2902
+16-00-10:No. 0 client connected : address is 127.0.0.1:2915
+16-00-19:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+16-00-20:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:2915
+16-00-20:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+16-00-34:Received Message : [0]/NOTICE DISCONNECT
+16-00-34:No. 0 client disconnected : address is 127.0.0.1:2915
+16-00-34:No. 0 client disconnected : address is 127.0.0.1:2915
+16-01-09:No. 0 client connected : address is 127.0.0.1:2934
+16-01-14:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+16-01-14:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:2934
+16-01-14:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+16-01-20:Received Message : [0]/NOTICE DISCONNECT
+16-01-20:No. 0 client disconnected : address is 127.0.0.1:2934
+16-01-20:No. 0 client disconnected : address is 127.0.0.1:2934
+16-02-21:No. 0 client connected : address is 127.0.0.1:2959
+16-02-26:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+16-02-26:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:2959
+16-02-26:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+16-02-29:Received Message : [0]/NOTICE DISCONNECT
+16-02-29:No. 0 client disconnected : address is 127.0.0.1:2959
+16-02-29:No. 0 client disconnected : address is 127.0.0.1:2959
+16-02-37:Server Close
+16-12-17:Server Open : Server Address is 192.168.10.2
+16-12-17:No. 0 client connected : address is 127.0.0.1:3042
+16-12-25:No. 0 client disconnected : address is 127.0.0.1:3042
+16-12-25:Server Close
+16-15-25:Server Open : Server Address is 192.168.10.2
+16-15-30:No. 0 client connected : address is 127.0.0.1:3083
+16-15-33:Send Message : /ERROR SHUTDOWN
+16-15-33:No. 0 client disconnected : address is 127.0.0.1:3083
+16-15-33:Server Close
+16-15-41:Server Open : Server Address is 192.168.10.2
+16-15-42:No. 0 client connected : address is 127.0.0.1:3087
+16-15-49:Received Message : [0]/LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+16-15-49:New User Sign In : reiy0902 IP ADDRESS : 127.0.0.1:3087
+16-15-50:Send Message : /LOGIN SIGNIN {"ID":"reiy0902","PW":"ksh159263","Win":0,"Lose":0,"Rate":100.0,"IsAvaliable":true}
+16-15-57:Send Message : /ERROR SHUTDOWN
+16-15-57:No. 0 client disconnected : address is 127.0.0.1:3087
+16-15-57:Server Close

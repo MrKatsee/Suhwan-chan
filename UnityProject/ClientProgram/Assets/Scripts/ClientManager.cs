@@ -147,33 +147,29 @@ public class ClientManager : MonoBehaviour
         }
     }
 
-    public static string IPAddress = "127.0.0.1";
-    public static string ClientName { get; set; }
+    public static string IPAddress = "192.168.1.102";
 
-    public static ClientManager instance = null;
+    public static bool IsConnected
+    {
+        get
+        {
+            return MyClient.IsConnected;
+        }
+    }
 
     public static void Send(string data)
     {
         MyClient.SendMsg(data);
     }
 
-    private void Awake()
-    {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
-    private void Start()
+    public static void Init()
     {
         MyClient.Init(IPAddress);
-        StartCoroutine(ConnectSequenceUI());
     }
 
-    IEnumerator ConnectSequenceUI()
+    private void Awake()
     {
-        UIManager_Main.instance.ui_Loading.StartLoading("접속 시도 중 : " + MyClient.ADDRESS + ":" + MyClient.PORT);
-        yield return new WaitUntil(() => MyClient.IsConnected);
-        UIManager_Main.instance.ui_Loading.StopLoading();
+        DontDestroyOnLoad(gameObject);
     }
 
     private void LateUpdate()
@@ -194,12 +190,32 @@ public class ClientManager : MonoBehaviour
                     case MessageType.DEFAULT: break;
                     case MessageType.NOTICE:
                         {
+                            string noticeType = message;
+                            string messageData = string.Empty;
+                            if (message.Contains(' '))
+                            {
+                                noticeType = message.Substring(0, message.IndexOf(' '));
+                                messageData = message.Substring(message.IndexOf(' ') + 1);
+                            }
+                            switch (Parse<NoticeType>(noticeType))
+                            {
+                                case NoticeType.SYNCUSER:
+                                    {
+                                        PlayManager.Instance.user = MyUser.ParseData(messageData);
+                                        break;
+                                    }
+                            }
                             break;
                         }
                     case MessageType.LOGIN:
                         {
-                            string loginType = message.Substring(0, message.IndexOf(' '));
-                            string messageData = message.Substring(message.IndexOf(' ') + 1);
+                            string loginType = message;
+                            string messageData = string.Empty;
+                            if (message.Contains(' '))
+                            {
+                                loginType = message.Substring(0, message.IndexOf(' '));
+                                messageData = message.Substring(message.IndexOf(' ') + 1);
+                            }
                             switch (Parse<LoginType>(loginType))
                             {
                                 case LoginType.SIGNIN:
@@ -215,6 +231,7 @@ public class ClientManager : MonoBehaviour
                         }
                     case MessageType.MATCH:
                         {
+                            PlayManager.Instance.Execute(message);
                             break;
                         }
                     case MessageType.ERROR:
@@ -226,7 +243,7 @@ public class ClientManager : MonoBehaviour
                                 errorType = message.Substring(0, message.IndexOf(' '));
                                 messageData = message.Substring(message.IndexOf(' ') + 1);
                             }
-                            switch (Parse<ErrorType>(message))
+                            switch (Parse<ErrorType>(errorType))
                             {
                                 case ErrorType.DEFAULT: break;
                                 case ErrorType.EXIST:
@@ -253,6 +270,12 @@ public class ClientManager : MonoBehaviour
                                         UIManager_Main.instance.ui_Toast.MakeToast("잘못된 비밀번호입니다.", 3f);
                                         break;
                                     }
+                                case ErrorType.SHUTDOWN:
+                                    {
+                                        MyClient.ShutDown();
+                                        MySceneManager.LoadScene("MainScene");
+                                        break;
+                                    }
                             }
                             break;
                         }
@@ -263,7 +286,6 @@ public class ClientManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        StopAllCoroutines();
         Send("/NOTICE DISCONNECT");
         MyClient.ShutDown();
     }

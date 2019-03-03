@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Loading : MonoBehaviour {
+public class UI_Matching : MonoBehaviour {
 
     Image image_Loading;
     Text text_Loading;
     IEnumerator coroutine_Animation;
     public bool IsRunning { get; private set; } = false;
-
     static Vector3 movePosition = new Vector3(10000, 0, 0);
 
     private void Awake()
@@ -26,7 +25,7 @@ public class UI_Loading : MonoBehaviour {
         text_Loading.text = content;
     }
 
-    public void StartLoading()
+    public void StartMatching()
     {
         if (coroutine_Animation == null) return;
         if (IsRunning) return;
@@ -35,7 +34,7 @@ public class UI_Loading : MonoBehaviour {
         IsRunning = true;
     }
 
-    public void StartLoading(string content)
+    public void StartMatching(string content)
     {
         if (coroutine_Animation == null) return;
         SetText(content);
@@ -45,7 +44,7 @@ public class UI_Loading : MonoBehaviour {
         IsRunning = true;
     }
 
-    public void StopLoading()
+    public void StopMatching()
     {
         if (!IsRunning) return;
         transform.localPosition = movePosition;
@@ -62,5 +61,4 @@ public class UI_Loading : MonoBehaviour {
             yield return null;
         }
     }
-
 }
