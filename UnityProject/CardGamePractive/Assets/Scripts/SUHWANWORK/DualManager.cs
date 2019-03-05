@@ -19,16 +19,10 @@ namespace SuHwan
             }
         }
 
-        public delegate void EventHandler_Start();
-        public delegate void EventHandler_Draw(SuHwan.Card drawCard);
-        public delegate void EventHandler_Summon(SuHwan.Card summonCard);
-        public delegate void EventHandler_Battle(SuHwan.Card attackCard, SuHwan.Card defendCard);
-        public delegate void EventHandler_End();
-        public event EventHandler_Start OnStart;
-        public event EventHandler_Draw OnDraw;
-        public event EventHandler_Summon OnSummon;
-        public event EventHandler_Battle OnBattle;
-        public event EventHandler_End OnEnd;
+
+        public delegate void EventHandler_Chain(SuHwan.Chain chain);
+        public event EventHandler_Chain OnChain;
+        private List<Chain> chains;
 
         public Player player_1;
         public Player player_2;
@@ -62,19 +56,26 @@ namespace SuHwan
 
         private IEnumerator DualRoutine()
         {
+            bool playerTurn = true;
             while (true)        // 승패 조건?
             {
-                OnStart?.Invoke();
+                Player player = playerTurn ? player_1 : player_2;
+                AddChain(new Chain_Start(player));
 
-                OnDraw?.Invoke(null);
-
-                OnSummon?.Invoke(null);
-
-                OnBattle?.Invoke(null, null);
-
-                OnEnd?.Invoke();
+                AddChain(new Chain_Draw(player, player.Draw()));
                 yield return null;
+                AddChain(new Chain_End(player));
             }
+        }
+
+        public void AddChain(Chain newChain)
+        {
+            chains.Add(newChain);
+            if(chains.Count > 0)
+            {
+                OnChain?.Invoke(chains[chains.Count - 1]);
+            }
+            chains.Clear();
         }
 
         public void EndDual(Player deadPlayer)

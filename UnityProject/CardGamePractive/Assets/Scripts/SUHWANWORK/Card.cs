@@ -37,6 +37,8 @@ namespace SuHwan
         }
         public int ATK { get; protected set; }                // Json으로 변환하려면 모두 public이어야 합니다.
 
+        public Player master { get; private set; }
+
         public Card()
         {
 
@@ -50,50 +52,50 @@ namespace SuHwan
             hp = _hp;
             ATK = _atk;
             cardState = SuHwan.CardState.DECK;      // 시작할 때 모든 카드는 덱에 있을 것이다.
-            DualManager.Instance.OnStart += OnStart;
-            DualManager.Instance.OnDraw += OnDraw;
-            DualManager.Instance.OnSummon += OnSummon;
-            DualManager.Instance.OnBattle += OnBattle;
-            DualManager.Instance.OnEnd += OnEnd;
+            DualManager.Instance.OnChain += OnChain;
         }
 
-        protected virtual void OnStart()                       // 턴의 시작에 발동
+        public void SetMaster(Player _player)
         {
-
+            master = _player;
         }
 
-        protected virtual void OnDraw(SuHwan.Card drawCard)                        // 드로우 시점에 발동 (상대 턴이던, 내 턴이던)
+        protected virtual void OnChain(Chain chain)
         {
-            if(drawCard == this) cardState = SuHwan.CardState.HAND;
-        }
-
-        protected virtual void OnSummon(SuHwan.Card summonCard)                                   // 소환 시에 발동
-        {
-            if (summonCard == this) cardState = SuHwan.CardState.FIELD;
-        }
-
-        protected virtual void OnBattle(SuHwan.Card attackCard, SuHwan.Card defendCard)                  // 배틀 시에 발동
-        {
-            if(attackCard == this)
+            if(chain.chainPlayer == master)
             {
-                HP -= defendCard.ATK;                                           // 이 이벤트는 방어 카드에게도 똑같이 발동될 것입니다. 그러면 자기의 체력만 빼면 되겠지?
+                switch (chain.chainType)
+                {
+                    case ChainType.START:
+                        {
+                            break;
+                        }
+                    case ChainType.END:
+                        {
+                            break;
+                        }
+                    case ChainType.DRAW:
+                        {
+                            Chain_Draw chain_Draw = (Chain_Draw)chain;
+                            if (chain_Draw.drawCard == this)
+                            {
+                                cardState = CardState.HAND;
+                            }
+                            break;
+                        }
+                }
             }
-            if(defendCard == this)
+            else
             {
-                HP -= attackCard.ATK;                                           // 다만, 공격 시 공격력 증가라던가 같은 효과를 발동하려는 경우 순서가 중요해지기 때문에 이 부분은 좀 더 생각해봐야 할듯.
+
             }
         }
 
-        protected virtual void OnEnd()                                                     // 턴 종료 시에 발동
+        protected virtual void OnDead()
         {
-
+            DualManager.Instance.AddChain(new Chain_Dead(master, this));
         }
 
-        protected virtual void OnDead()                                                   // 뒤지면 발동
-        {
-            cardState = SuHwan.CardState.GRAVE;                                             // 묘지에서 효과를 발휘할 수도 있기 때문에 위의 이벤트들을 제거하지는 않는다.
-        }
-        
         public string ToData()
         {
             return JsonConvert.SerializeObject(this, Formatting.None);
